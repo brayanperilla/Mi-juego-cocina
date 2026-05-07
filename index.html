@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, interactive-widget=resizes-content" />
+  <title>¡Atrapa los Ingredientes! 🍳</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- ====== GameDistribution SDK (anuncios en video) ====== -->
+  <!-- PASO 1: Regístrate en https://gamedistribution.com    -->
+  <!-- PASO 2: Reemplaza YOUR_GAME_ID con tu ID real         -->
+  <script>
+    window.GD_OPTIONS = {
+      gameId: 'YOUR_GAME_ID_HERE',
+      onEvent: function (event) {
+        if (window._gdEventHandler) window._gdEventHandler(event);
+      }
+    };
+  </script>
+  <script async src="https://html5.api.gamedistribution.com/main.min.js"></script>
+</head>
+
+<body>
+
+  <!-- ========== PANTALLA DE INICIO ========== -->
+  <div id="screen-start" class="screen active">
+    <div class="top-right-actions">
+      <button id="btn-mute-menu" class="btn-icon-secondary btn-blue" title="Silenciar Sonido">
+        <span id="mute-icon-menu">🔊</span>
+      </button>
+    </div>
+    <div class="start-card">
+      <div class="logo-container">
+        <div class="game-logo">
+          <div id="dizzy-cheese" class="dizzy-cheese hidden">
+            <span>🧀</span><span>🧀</span><span>🧀</span>
+          </div>
+          <img src="chef_rat_new.png" class="logo-rat" onerror="this.src='imgs/remy_chef.png'; this.onerror=null;">
+
+
+
+          <span class="logo-basket">🧺</span>
+        </div>
+      </div>
+      <h1 class="game-title">¡Atrapa los<br />Ingredientes!</h1>
+      <p class="subtitle">¡Domina la cocina! Atrapa ingredientes, evita trampas y cocina el récord más alto. 🚀🥘</p>
+
+      <div class="coins-info-home" style="margin: 15px 0; font-size: 1.3rem; color: #ffd700; font-weight: bold;">
+        🪙 Monedas: <span id="home-coins">0</span>
+      </div>
+
+      <div class="main-actions">
+        <button id="btn-start" class="btn-play">
+          <span>¡JUGAR!</span>
+          <div class="btn-shine"></div>
+        </button>
+      </div>
+
+      <div class="secondary-actions" style="margin-top: 20px; display: flex; gap: 15px; justify-content: center;">
+        <button id="btn-open-guide" class="btn-icon-secondary"
+          style="background: linear-gradient(135deg, #00bcd4, #0288d1);" title="Guía del Jugador">
+          <span>📖</span>
+        </button>
+        <button id="btn-upgrades" class="btn-icon-secondary" title="Mejorar Habilidades">
+          <span>🌟</span>
+        </button>
+        <button id="btn-open-skins" class="btn-icon-secondary btn-pink" title="Vestidor (Ropa)">
+          <span>🧣</span>
+        </button>
+        <button id="btn-open-baskets" class="btn-icon-secondary"
+          style="background: linear-gradient(135deg, #4caf50, #2e7d32);" title="Diseños de Canasta">
+          <span>🧺</span>
+        </button>
+      </div>
+
+      <div class="lives-info" style="margin-top: 25px;">
+        <span>❤️</span><span>❤️</span><span>❤️</span>
+        <small>3 vidas para sobrevivir</small>
+      </div>
+      <div class="controls-info">
+        <div class="ctrl"><span>🖱️</span> Mouse</div>
+        <div class="ctrl"><span>⬅️➡️</span> Flechas</div>
+        <div class="ctrl"><span>📱</span> Táctil</div>
+      </div>
+
+      <!-- SECCIÓN CUADRO DE HONOR (TOP 3) -->
+      <div id="leaderboard-section"
+        style="margin-top: 25px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+          <h3 style="font-family:'Fredoka One',cursive; color:var(--accent2); font-size: 1.1rem; margin: 0;">🏆 Tabla
+            Mundial</h3>
+          <button id="btn-refresh-leaderboard"
+            style="background:none; border:none; color:var(--accent2); cursor:pointer; font-size:1rem;"
+            title="Actualizar">🔄</button>
+        </div>
+        <div id="leaderboard-body" style="text-align: left;">
+          <!-- Se genera por JS -->
+        </div>
+      </div>
+    </div>
+    <div class="floating-food" id="floating-food"></div>
+  </div>
+  <!-- ========== PANTALLA DE SELECCIÓN DE MODO ========== -->
+  <div id="screen-modes" class="screen">
+    <div class="start-card mode-card-container">
+      <h2 class="game-title" style="font-size: 2.2rem; margin-bottom: 10px;">¡Elige tu Reto!</h2>
+      <p class="subtitle" style="margin-bottom: 25px;">Selecciona cómo quieres cocinar hoy</p>
+      
+      <div class="modes-grid">
+        <!-- MODO CLÁSICO -->
+        <div class="mode-option" id="mode-classic">
+          <div class="mode-icon">👨‍🍳</div>
+          <div class="mode-info">
+            <h3>Aventura Chef</h3>
+            <p>Completa pedidos y viaja por el mundo.</p>
+          </div>
+          <div class="mode-tag">Clásico</div>
+        </div>
+
+        <!-- MODO TIEMPO -->
+        <div class="mode-option" id="mode-time">
+          <div class="mode-icon">⏱️</div>
+          <div class="mode-info">
+            <h3>Frenesí 90s</h3>
+            <p>90 segundos para cocinar al máximo.</p>
+          </div>
+          <div class="mode-tag tag-blue">Reloj</div>
+        </div>
+
+        <!-- MODO SUPERVIVENCIA -->
+        <div class="mode-option" id="mode-survival">
+          <div class="mode-icon">🌪️</div>
+          <div class="mode-info">
+            <h3>Lluvia Extrema</h3>
+            <p>¡No dejes caer ningún ingrediente bueno!</p>
+          </div>
+          <div class="mode-tag tag-red">Difícil</div>
+        </div>
+
+        <!-- MODO HISTORIA -->
+        <div class="mode-option" id="mode-story">
+          <div class="mode-icon">📖</div>
+          <div class="mode-info">
+            <h3>Modo Historia</h3>
+            <p>Completa misiones recolectando ingredientes clave.</p>
+          </div>
+          <div class="mode-tag tag-green">Aventura</div>
+        </div>
+      </div>
+
+      <button id="btn-back-modes" class="btn-secondary" style="margin-top:25px; width:100%;">🔙 Volver</button>
+    </div>
+    <div class="floating-food" id="floating-food-modes"></div>
+  </div>
+
+
+  <!-- ========== PANTALLA DE GUÍA ========== -->
+  <div id="screen-guide" class="screen">
+    <div class="guide-card" id="guide-card">
+
+      <!-- Header -->
+      <div class="guide-header">
+        <div class="guide-header-icon">📖</div>
+        <h2 class="guide-title">¡Cómo Jugar!</h2>
+        <p class="guide-subtitle">¡Sé el mejor chef del mundo!</p>
+      </div>
+
+      <!-- Scroll area -->
+      <div class="guide-scroll-area">
+
+        <!-- Step 1: Controls -->
+        <div class="guide-section guide-section--blue">
+          <div class="guide-section-header">
+            <span class="guide-step-badge">1</span>
+            <h3>¡Mueve a Remy! 🐭</h3>
+          </div>
+          <div class="guide-controls-grid">
+            <div class="guide-ctrl-badge">🖱️<br><small>Ratón</small></div>
+            <div class="guide-ctrl-badge">⬅️➡️<br><small>Flechas</small></div>
+            <div class="guide-ctrl-badge">👆<br><small>Táctil</small></div>
+          </div>
+        </div>
+
+        <!-- Step 2: Catch -->
+        <div class="guide-section guide-section--green">
+          <div class="guide-section-header">
+            <span class="guide-step-badge guide-step-badge--green">2</span>
+            <h3>¡Atrapa los Ingredientes! ✅</h3>
+          </div>
+          <p class="guide-text">Mira la barra <strong>🛒 Faltan:</strong> y atrapa los ingredientes exactos para completar la receta del cliente.</p>
+          <div class="guide-items-preview">
+            <!-- Tomate: veggies col=0 row=0 -->
+            <div class="guide-item-chip good"><div style="width:50px;height:50px;background-image:url(imgs/veggies.png);background-size:300% 300%;background-position:0% 0%;"></div></div>
+            <!-- Cebolla: veggies col=1 row=0 -->
+            <div class="guide-item-chip good"><div style="width:50px;height:50px;background-image:url(imgs/veggies.png);background-size:300% 300%;background-position:50% 0%;"></div></div>
+            <!-- Queso: proteins col=0 row=0 -->
+            <div class="guide-item-chip good"><div style="width:50px;height:50px;background-image:url(imgs/proteins.png);background-size:300% 300%;background-position:0% 0%;"></div></div>
+            <!-- Carne: proteins col=1 row=0 -->
+            <div class="guide-item-chip good"><div style="width:50px;height:50px;background-image:url(imgs/proteins.png);background-size:300% 300%;background-position:50% 0%;"></div></div>
+            <!-- Zanahoria: veggies col=0 row=1 -->
+            <div class="guide-item-chip good"><div style="width:50px;height:50px;background-image:url(imgs/veggies.png);background-size:300% 300%;background-position:0% 50%;"></div></div>
+          </div>
+          <div class="guide-tip-box guide-tip-box--green">
+            💡 <strong>Tip:</strong> ¡Un cliente feliz = más puntos y monedas!
+          </div>
+        </div>
+
+        <!-- Step 3: Dodge -->
+        <div class="guide-section guide-section--red">
+          <div class="guide-section-header">
+            <span class="guide-step-badge guide-step-badge--red">3</span>
+            <h3>¡Evita las Trampas! ⚠️</h3>
+          </div>
+          <p class="guide-text">Estos objetos peligrosos te quitarán una ❤️ vida al instante. ¡Esquívalos!</p>
+          <div class="guide-items-preview">
+            <div class="guide-item-chip bad" style="font-size:2rem;">💣</div>
+            <div class="guide-item-chip bad" style="font-size:2rem;">🛞</div>
+            <div class="guide-item-chip bad" style="font-size:2rem;">👕</div>
+            <div class="guide-item-chip bad" style="font-size:2rem;">☢️</div>
+            <div class="guide-item-chip bad" style="font-size:2rem;">🧨</div>
+          </div>
+          <div class="guide-tip-box guide-tip-box--red">
+            ⚠️ ¡Tienes 3 vidas! Pierde las 3 y el juego termina.
+          </div>
+        </div>
+
+        <!-- Step 4: Power-ups -->
+        <div class="guide-section guide-section--yellow">
+          <div class="guide-section-header">
+            <span class="guide-step-badge guide-step-badge--yellow">4</span>
+            <h3>¡Súper Poderes! ⚡</h3>
+          </div>
+          <div class="guide-powerups-grid">
+            <div class="guide-powerup-card">
+              <div class="guide-powerup-icon">🪙</div>
+              <div class="guide-powerup-name">Moneda</div>
+              <div class="guide-powerup-desc">+50 pts<br>y monedas</div>
+            </div>
+            <div class="guide-powerup-card">
+              <div class="guide-powerup-icon">🧲</div>
+              <div class="guide-powerup-name">Imán</div>
+              <div class="guide-powerup-desc">Atrae todo<br>lo bueno</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Score tips -->
+        <div class="guide-section guide-section--purple">
+          <div class="guide-section-header">
+            <span class="guide-step-badge guide-step-badge--purple">🏆</span>
+            <h3>¡A Puntuar!</h3>
+          </div>
+          <div class="guide-score-rows">
+            <div class="guide-score-row"><span>✅ Ingrediente correcto</span><span class="guide-score-val">+10 pts</span></div>
+            <div class="guide-score-row"><span>🍽️ Receta completada</span><span class="guide-score-val">+50 pts</span></div>
+            <div class="guide-score-row"><span>🪙 Moneda atrapada</span><span class="guide-score-val">+50 pts</span></div>
+            <div class="guide-score-row"><span>🎽 Nivel arriba</span><span class="guide-score-val">¡Más velocidad!</span></div>
+          </div>
+        </div>
+
+      </div><!-- end scroll area -->
+
+      <button id="btn-back-guide" class="btn-play guide-back-btn">
+        <span>¡A Jugar! 🍳</span>
+        <div class="btn-shine"></div>
+      </button>
+    </div>
+    <div class="floating-food" id="floating-food-guide"></div>
+  </div>
+
+  <!-- ========== PANTALLA DE HABILIDADES ========== -->
+  <div id="screen-upgrades" class="screen">
+    <div class="start-card">
+      <h2 style="font-family:'Fredoka One',cursive; color:var(--accent2); margin-bottom:10px;">Mejorar Habilidades</h2>
+      <div class="coins-info-home" style="margin-bottom: 20px; font-size: 1.1rem; color: #ffd700; font-weight: bold;">
+        🪙 Tus Monedas: <span id="upgrades-coins-display">0</span>
+      </div>
+
+      <div class="upgrade-item"
+        style="display: flex; align-items: center; justify-content: space-between; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px;">
+        <div class="upg-icon" style="font-size: 2rem;">🧲</div>
+        <div class="upg-details" style="text-align: left; flex: 1; margin-left: 15px;">
+          <h4 style="margin: 0; color: #fff;">Imán Mágico</h4>
+          <p style="margin: 0; font-size: 0.85rem; color: #bbb;">Duración: <strong id="upg-magnet-val">8</strong>s</p>
+          <div class="upg-progress-bar" style="display: flex; gap: 4px; margin-top: 8px;">
+            <div class="upg-dot" id="mag-dot-1"></div>
+            <div class="upg-dot" id="mag-dot-2"></div>
+            <div class="upg-dot" id="mag-dot-3"></div>
+            <div class="upg-dot" id="mag-dot-4"></div>
+            <div class="upg-dot" id="mag-dot-5"></div>
+          </div>
+        </div>
+        <button id="btn-buy-magnet" class="btn-buy"
+          style="background: linear-gradient(135deg, #f7c948, #e8901a); border: none; padding: 8px 15px; border-radius: 8px; font-weight: bold; cursor: pointer;">
+          Mejorar<br><small id="upg-magnet-cost-label"><span id="upg-magnet-cost">5</span> 🪙</small>
+        </button>
+      </div>
+
+      <!-- Botón Monedas Gratis (Dentro de la carta) -->
+      <button id="btn-free-coins-upg" class="btn-revive"
+        style="margin-top: 15px; width: 100%; border-radius: 12px; height: auto; padding: 10px 15px; display: flex; align-items: center; justify-content: center; gap: 12px; background: linear-gradient(135deg, #6bcb77, #4caf50); animation: none; box-shadow: none;">
+        <span style="font-size: 1.8rem;">🎬</span>
+        <div style="text-align: left;">
+          <strong style="display: block; font-size: 1rem; color: #1a1000;">Monedas Gratis</strong>
+          <small style="display: block; font-size: 0.75rem; color: rgba(0,0,0,0.6);">Mira un anuncio y gana 50
+            🪙</small>
+        </div>
+      </button>
+
+      <button id="btn-back-menu" class="btn-secondary" style="margin-top:20px; width:100%;">🔙 Volver al Menú</button>
+    </div>
+    <div class="floating-food" id="floating-food-upg"></div>
+  </div>
+
+  <!-- ========== PANTALLA DE VESTIDOR (Ropa) ========== -->
+  <div id="screen-skins" class="screen">
+    <div class="start-card">
+      <h2 class="shop-title">Vestidor de Remy</h2>
+      <div class="coins-info-home shop-coins-banner">
+        🪙 Tus Monedas: <span id="skins-coins-display">0</span>
+      </div>
+
+      <div class="skin-preview-wrapper">
+        <div class="skin-preview-stage">
+          <div class="preview-light"></div>
+          <div class="preview-particles" id="preview-particles-skins"></div>
+          <div class="preview-combo">
+            <img id="skin-preview-img" class="skin-preview-img" src="chef_rat_new.png" onerror="this.src='imgs/remy_chef.png'; this.onerror=null;" alt="Remy Preview">
+            <img id="basket-preview-img-sk" class="basket-preview-img" src="" alt="Basket Preview">
+          </div>
+          <div class="preview-platform"></div>
+        </div>
+        <div id="skin-preview-name" class="skin-preview-name">Chef (Normal)</div>
+        <div id="skin-preview-desc" class="skin-preview-desc">¡El chef clásico!</div>
+      </div>
+
+      <div class="shop-carousel-container">
+        <button class="carousel-btn left" onclick="scrollShop('skins-container', -1)">◀</button>
+        <div id="skins-container" class="shop-container-scroll">
+          <!-- Las skins se generarán dinámicamente -->
+        </div>
+        <button class="carousel-btn right" onclick="scrollShop('skins-container', 1)">▶</button>
+      </div>
+
+      <!-- Botón Monedas Gratis (También en Vestidor) -->
+      <button id="btn-free-coins-sk" class="btn-revive"
+        style="margin-top: 15px; width: 100%; border-radius: 12px; height: auto; padding: 10px 15px; display: flex; align-items: center; justify-content: center; gap: 12px; background: linear-gradient(135deg, #6bcb77, #4caf50); animation: none; box-shadow: none;">
+        <span style="font-size: 1.8rem;">🎬</span>
+        <div style="text-align: left;">
+          <strong style="display: block; font-size: 1rem; color: #1a1000;">Monedas Gratis</strong>
+          <small style="display: block; font-size: 0.75rem; color: rgba(0,0,0,0.6);">Mira un anuncio y gana 50
+            🪙</small>
+        </div>
+      </button>
+
+      <button id="btn-back-skins" class="btn-secondary" style="margin-top:20px; width:100%;">🔙 Volver al Menú</button>
+    </div>
+    <div class="floating-food" id="floating-food-skins"></div>
+  </div>
+
+  <!-- ========== PANTALLA DE DISEÑOS DE CANASTA ========== -->
+  <div id="screen-baskets" class="screen hidden">
+    <div class="start-card">
+      <h2 class="shop-title">Diseños de Canasta</h2>
+      <div class="coins-info-home shop-coins-banner">
+        🪙 Tus Monedas: <span id="baskets-coins-display">0</span>
+      </div>
+
+      <div class="skin-preview-wrapper">
+        <div class="skin-preview-stage">
+          <div class="preview-light"></div>
+          <div class="preview-particles" id="preview-particles-bk"></div>
+          <div class="preview-combo">
+            <img id="skin-preview-img-bk" class="skin-preview-img" src="chef_rat_new.png" onerror="this.src='imgs/remy_chef.png'; this.onerror=null;" alt="Remy Preview">
+            <img id="basket-preview-img" class="basket-preview-img" src="" alt="Basket Preview">
+          </div>
+          <div class="preview-platform"></div>
+        </div>
+        <div id="basket-preview-name" class="skin-preview-name">Canasta Clásica</div>
+        <div id="basket-preview-desc" class="skin-preview-desc">Diseño tradicional de mimbre</div>
+      </div>
+
+      <div class="shop-carousel-container">
+        <button class="carousel-btn left" onclick="scrollShop('baskets-container', -1)">◀</button>
+        <div id="baskets-container" class="shop-container-scroll">
+          <!-- Las canastas se generarán dinámicamente -->
+        </div>
+        <button class="carousel-btn right" onclick="scrollShop('baskets-container', 1)">▶</button>
+      </div>
+
+      <button id="btn-free-coins-bk" class="btn-revive"
+        style="margin-top: 15px; width: 100%; border-radius: 12px; height: auto; padding: 10px 15px; display: flex; align-items: center; justify-content: center; gap: 12px; background: linear-gradient(135deg, #6bcb77, #4caf50); animation: none; box-shadow: none;">
+        <span style="font-size: 1.8rem;">🎬</span>
+        <div style="text-align: left;">
+          <strong style="display: block; font-size: 1rem; color: #1a1000;">Monedas Gratis</strong>
+          <small style="display: block; font-size: 0.75rem; color: rgba(0,0,0,0.6);">Mira un anuncio y gana 50 🪙</small>
+        </div>
+      </button>
+
+      <button id="btn-back-baskets" class="btn-secondary" style="margin-top:20px; width:100%;">🔙 Volver al Menú</button>
+    </div>
+    <div class="floating-food" id="floating-food-baskets"></div>
+  </div>
+
+  <!-- ========== PANTALLA DE JUEGO ========== -->
+  <div id="screen-game" class="screen">
+    <div class="game-wrapper">
+
+      <!-- HUD superior -->
+      <div class="hud">
+        <div class="hud-main-group">
+          <div class="hud-block">
+            <span class="hud-value" id="hud-score">0</span>
+            <span class="hud-label">Puntos</span>
+          </div>
+          <div class="hud-block">
+            <span class="hud-value" id="hud-coins" style="color: #ffd700;">0</span>
+            <span class="hud-label">Monedas</span>
+          </div>
+        </div>
+
+        <div class="hud-center-group">
+          <div id="hud-lives" class="lives-display">
+            <span class="heart active">❤️</span>
+            <span class="heart active">❤️</span>
+            <span class="heart active">❤️</span>
+          </div>
+        </div>
+
+        <div class="hud-right-group">
+          <div class="hud-block-mini" title="Nivel">
+             <span class="mini-label">NIVEL</span>
+             <span class="mini-value" id="hud-level">1</span>
+             <div class="speed-container">
+               <div id="speed-bar-hud" class="speed-bar"></div>
+             </div>
+          </div>
+          <button id="btn-mute" class="btn-mute" title="Sonido">🔊</button>
+        </div>
+      </div>
+
+      <!-- NUEVA VENTANA DE CLIENTES (Izquierda) -->
+      <div class="shop-window">
+        <div class="shop-awning"></div>
+        <div class="shop-counter">
+          <!-- Personaje del cliente -->
+          <div id="customer-character" class="customer-character"></div>
+          <!-- Contenedor de propinas -->
+          <div id="tip-container" class="tip-container"></div>
+          <!-- Mostrador físico -->
+          <div class="counter-desk"></div>
+          <!-- Burbuja de diálogo -->
+          <div class="speech-bubble" id="speech-bubble">
+            <span class="bubble-text">¡Hola!<br />Quiero una</span>
+            <strong id="bubble-order" class="bubble-order">🍔 Hamburguesa</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Canvas principal (Centro) -->
+      <div class="canvas-container">
+        <canvas id="gameCanvas"></canvas>
+        <!-- Overlay de pausa -->
+        <div id="pause-overlay" class="pause-overlay hidden">
+          <div class="pause-card">
+            <div class="pause-emoji">⏸️</div>
+            <h2>PAUSA</h2>
+            <div class="pause-actions">
+              <button id="btn-resume" class="btn-play" style="padding: 12px 30px; font-size: 1rem;">▶️ Continuar</button>
+              <button id="btn-pause-restart" class="btn-secondary">🔄 Reiniciar</button>
+              <button id="btn-pause-menu" class="btn-secondary">🏠 Volver al Inicio</button>
+            </div>
+          </div>
+        </div>
+        <div id="timer-hud">90</div>
+      </div>
+
+      <!-- Panel lateral: Progreso de la orden (Derecha) -->
+      <div class="sidebar">
+        <div class="sidebar-title">🛒 Faltan:</div>
+        <div id="customer-area" class="customer-area">
+          <div id="order-ingredients" class="order-ingredients">
+            <!-- Los ingredientes requeridos irán aquí -->
+          </div>
+        </div>
+
+        <!-- Leyenda: qué atrapar y qué evitar -->
+        <div class="legend">
+          <div class="legend-row good">
+            <span class="legend-dot">✅</span>
+            <span class="legend-text">Atrapa la<br /><strong>receta</strong></span>
+          </div>
+          <div class="legend-row bad">
+            <span class="legend-dot">💣</span>
+            <span class="legend-text">Evita la<br /><strong>basura</strong> ⚠️</span>
+          </div>
+        </div>
+
+        <div class="speed-meter">
+          <span class="hud-label">VELOCIDAD</span>
+          <div class="speed-bar-bg">
+            <div id="speed-bar-sidebar" class="speed-bar-fill"></div>
+          </div>
+        </div>
+        <button id="btn-pause" class="btn-pause-icon">⏸️ Pausa</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== PANTALLA GAME OVER ========== -->
+  <div id="screen-gameover" class="screen">
+    <div class="gameover-card">
+
+      <!-- Insignia de nuevo récord (oculta por defecto) -->
+      <div id="new-record-badge" class="new-record-badge hidden">
+        🏆 ¡NUEVO RÉCORD!
+      </div>
+
+      <div class="gameover-emoji">😵</div>
+      <h2 class="gameover-title">¡Juego Terminado!</h2>
+      <p class="gameover-sub">¡Se escaparon demasiados ingredientes!</p>
+
+      <div class="final-stats">
+        <div class="stat-box">
+          <span class="stat-label">Puntuación</span>
+          <span class="stat-val" id="final-score">0</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">Nivel</span>
+          <span class="stat-val" id="final-level">1</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">Atrapados</span>
+          <span class="stat-val" id="final-caught">0</span>
+        </div>
+        <div class="stat-box stat-box-gold">
+          <span class="stat-label">🏆 Récord</span>
+          <span class="stat-val gold-val" id="final-best">0</span>
+        </div>
+      </div>
+
+      <div id="final-recipe" class="final-recipe"></div>
+
+      <!-- NUEVO: CAMPO PARA NOMBRE SI HAY RÉCORD GLOBAL -->
+      <div id="global-record-input" class="hidden"
+        style="background: rgba(168, 85, 247, 0.15); padding: 15px; border-radius: 12px; margin: 15px 0; border: 1px solid var(--accent2); text-align: center;">
+        <p style="color: var(--accent2); font-weight: bold; margin-bottom: 10px; font-size: 1.3rem;">🏆 ¡NUEVO RÉCORD GLOBAL! 🏆</p>
+        <input type="text" id="player-name-input" placeholder="Escribe tu nombre..." maxlength="12"
+          style="width: 100%; padding: 10px; border-radius: 8px; border: none; text-align: center; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 1rem;">
+        <button id="btn-save-global" class="btn-upgrade-main"
+          style="margin-top: 10px; padding: 12px; width: 100%;">Guardar mi Récord</button>
+      </div>
+
+
+      <!-- BOTÓN DE REVIVIR CON ANUNCIO -->
+      <div id="revive-section" class="revive-section">
+        <p class="revive-hint">¿Quieres continuar y salvar tu récord?</p>
+        <button id="btn-revive" class="btn-revive">
+          <span class="revive-icon">🎬</span>
+          <span class="revive-text">
+            <strong>Ver anuncio y revivir</strong>
+            <small>Recupera 1 vida y sigue jugando</small>
+          </span>
+          <div class="btn-shine"></div>
+        </button>
+      </div>
+
+      <div class="gameover-buttons">
+        <button id="btn-restart" class="btn-play">
+          <span>Volver a Jugar</span>
+          <div class="btn-shine"></div>
+        </button>
+        <button id="btn-menu" class="btn-secondary">🏠 Menú</button>
+      </div>
+    </div>
+    <div class="floating-food" id="floating-food-gameover"></div>
+  </div>
+
+  <!-- ========== PANTALLA VICTORIA HISTORIA ========== -->
+  <div id="screen-victory" class="screen">
+    <div class="gameover-card" style="border: 4px solid #ffd700; background: linear-gradient(145deg, #2b1d3d 0%, #1a0f2e 100%); position: relative; overflow: hidden; max-width: 450px;">
+      
+      <!-- Lluvia de confeti detrás de la tarjeta -->
+      <div id="victory-confetti" style="position: absolute; inset: 0; pointer-events: none; opacity: 0.5;"></div>
+
+      <!-- IMAGEN DE VICTORIA (EL RATÓN CON LA COPA) -->
+      <div style="position: relative; margin-top: 20px; display: flex; justify-content: center; align-items: center;">
+        <div style="position: absolute; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255, 215, 0, 0.4) 0%, transparent 70%); filter: blur(20px); animation: pulseGlow 2s infinite alternate;"></div>
+        <img src="imgs/victory_remy.png" alt="¡Campeón!" style="width: 280px; height: auto; position: relative; z-index: 2; animation: victoryPop 1s cubic-bezier(0.17, 0.89, 0.32, 1.49) forwards, ratFloat 3s ease-in-out infinite 1s;">
+      </div>
+
+      <h2 class="gameover-title" style="color: #ffd700; text-shadow: 0 0 15px rgba(255, 215, 0, 0.5); font-size: 2.2rem; margin-bottom: 5px; position: relative; z-index: 3;">¡Felicidades, Chef!</h2>
+      <p class="gameover-sub" style="color: #fff; font-size: 1.1rem; margin-bottom: 25px; position: relative; z-index: 3;">Has completado todas las misiones del Modo Historia.<br>¡Eres una leyenda culinaria!</p>
+
+      <button id="btn-victory-menu" class="btn-play" style="width: 100%; font-size: 1.2rem; padding: 15px; position: relative; z-index: 3;">
+        <span>Volver al Menú</span>
+        <div class="btn-shine"></div>
+      </button>
+    </div>
+  </div>
+
+
+  <!-- ========== OVERLAY CARGANDO ANUNCIO ========== -->
+  <div id="ad-overlay" class="ad-overlay hidden">
+    <div class="ad-card">
+      <div class="ad-spinner"></div>
+      <p class="ad-text">Cargando anuncio…</p>
+      <small class="ad-sub">Por favor espera para continuar</small>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+
+</html>
