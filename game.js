@@ -9,66 +9,66 @@ const CUSTOMERS = ['🧑‍🍳', '👩‍💼', '👨‍🎓', '🕵️', '🧙
 
 const RECIPES = [
   { name: 'Hamburguesa', gender: 'f', emoji: '🍔', ingredients: ['🍞', '🥩', '🧀', '🥬', '🍅', '🍞'] },
-  { name: 'Salchipapa',  gender: 'f', emoji: '🍟', ingredients: ['🍟', '🌭', '🧀', '🥫'] },
+  { name: 'Salchipapa', gender: 'f', emoji: '🍟', ingredients: ['🍟', '🌭', '🧀', '🥫'] },
   { name: 'Arepa Rellena', gender: 'f', emoji: '🫓', ingredients: ['🫓', '🧀', '🥩', '🥑'] },
-  { name: 'Pizza',       gender: 'f', emoji: '🍕', ingredients: ['🌾', '🍅', '🧀', '🍄', '🥩'] },
-  { name: 'Taco',        gender: 'm', emoji: '🌮', ingredients: ['🌮', '🥩', '🥬', '🍅', '🧀'] },
-  { name: 'Sopa',        gender: 'f', emoji: '🥣', ingredients: ['🥕', '🧅', '🧄', '🍗', '🌽'] },
-  { name: 'Ensalada',    gender: 'f', emoji: '🥗', ingredients: ['🥬', '🍅', '🧅', '🥑', '🍋'] },
-  { name: 'Burrito',     gender: 'm', emoji: '🌯', ingredients: ['🌮', '🥩', '🧀', '🥑', '🍅', '🍚'] },
-  { name: 'Sushi',       gender: 'm', emoji: '🍣', ingredients: ['🍚', '🐟', '🥑', '🥒'] },
-  { name: 'Empanada',    gender: 'f', emoji: '🥟', ingredients: ['🌾', '🥩', '🧅', '🍅'] },
-  { name: 'Pasta',       gender: 'f', emoji: '🍝', ingredients: ['🍝', '🍅', '🧄', '🧀', '🍄'] },
-  { name: 'Sándwich',    gender: 'm', emoji: '🥪', ingredients: ['🍞', '🧀', '🥩', '🥬', '🍞'] },
-  { name: 'Desayuno',    gender: 'm', emoji: '🍳', ingredients: ['🥚', '🥓', '🍞', '🧀'] }
+  { name: 'Pizza', gender: 'f', emoji: '🍕', ingredients: ['🌾', '🍅', '🧀', '🍄', '🥩'] },
+  { name: 'Taco', gender: 'm', emoji: '🌮', ingredients: ['🌮', '🥩', '🥬', '🍅', '🧀'] },
+  { name: 'Sopa', gender: 'f', emoji: '🥣', ingredients: ['🥕', '🧅', '🧄', '🍗', '🌽'] },
+  { name: 'Ensalada', gender: 'f', emoji: '🥗', ingredients: ['🥬', '🍅', '🧅', '🥑', '🍋'] },
+  { name: 'Burrito', gender: 'm', emoji: '🌯', ingredients: ['🌮', '🥩', '🧀', '🥑', '🍅', '🍚'] },
+  { name: 'Sushi', gender: 'm', emoji: '🍣', ingredients: ['🍚', '🐟', '🥑', '🥒'] },
+  { name: 'Empanada', gender: 'f', emoji: '🥟', ingredients: ['🌾', '🥩', '🧅', '🍅'] },
+  { name: 'Pasta', gender: 'f', emoji: '🍝', ingredients: ['🍝', '🍅', '🧄', '🧀', '🍄'] },
+  { name: 'Sándwich', gender: 'm', emoji: '🥪', ingredients: ['🍞', '🧀', '🥩', '🥬', '🍞'] },
+  { name: 'Desayuno', gender: 'm', emoji: '🍳', ingredients: ['🥚', '🥓', '🍞', '🧀'] }
 ];
 
 // ─── INGREDIENTES DISPONIBLES ──────────────────────────────────────────────
 const INGREDIENTS = [
-  { emoji: '🍅', name: 'Tomate',      color: '#ff6b6b' },
-  { emoji: '🧅', name: 'Cebolla',     color: '#ffd93d' },
-  { emoji: '🧄', name: 'Ajo',         color: '#f9f0dc' },
-  { emoji: '🥕', name: 'Zanahoria',   color: '#ff8c42' },
-  { emoji: '🥬', name: 'Lechuga',     color: '#6bcb77' },
-  { emoji: '🍋', name: 'Limón',       color: '#ffd700' },
-  { emoji: '🥑', name: 'Aguacate',    color: '#4caf50' },
-  { emoji: '🌽', name: 'Maíz',        color: '#ffc107' },
-  { emoji: '🍄', name: 'Champiñón',   color: '#bc8a5f' },
-  { emoji: '🧀', name: 'Queso',       color: '#f9a825' },
-  { emoji: '🥩', name: 'Carne',       color: '#c62828' },
-  { emoji: '🍗', name: 'Pollo',       color: '#e6a817' },
-  { emoji: '🍞', name: 'Pan',         color: '#f4a460' },
-  { emoji: '🍟', name: 'Papas',       color: '#ffcc00' },
-  { emoji: '🌭', name: 'Salchicha',   color: '#ff9933' },
-  { emoji: '🥫', name: 'Salsa',       color: '#ff3300' },
-  { emoji: '🫓', name: 'Arepa',       color: '#ffe4b5' },
-  { emoji: '🌾', name: 'Harina',      color: '#f5deb3' },
-  { emoji: '🌮', name: 'Tortilla',    color: '#f5deb3' },
-  { emoji: '🍚', name: 'Arroz',       color: '#ffffff' },
-  { emoji: '🐟', name: 'Pescado',     color: '#a0c4ff' },
-  { emoji: '🥒', name: 'Pepino',      color: '#8fbc8f' },
-  { emoji: '🍝', name: 'Fideos',      color: '#ffd700' },
-  { emoji: '🥚', name: 'Huevo',       color: '#fffacd' },
-  { emoji: '🥓', name: 'Tocino',      color: '#ff9999' }
+  { emoji: '🍅', name: 'Tomate', color: '#ff6b6b' },
+  { emoji: '🧅', name: 'Cebolla', color: '#ffd93d' },
+  { emoji: '🧄', name: 'Ajo', color: '#f9f0dc' },
+  { emoji: '🥕', name: 'Zanahoria', color: '#ff8c42' },
+  { emoji: '🥬', name: 'Lechuga', color: '#6bcb77' },
+  { emoji: '🍋', name: 'Limón', color: '#ffd700' },
+  { emoji: '🥑', name: 'Aguacate', color: '#4caf50' },
+  { emoji: '🌽', name: 'Maíz', color: '#ffc107' },
+  { emoji: '🍄', name: 'Champiñón', color: '#bc8a5f' },
+  { emoji: '🧀', name: 'Queso', color: '#f9a825' },
+  { emoji: '🥩', name: 'Carne', color: '#c62828' },
+  { emoji: '🍗', name: 'Pollo', color: '#e6a817' },
+  { emoji: '🍞', name: 'Pan', color: '#f4a460' },
+  { emoji: '🍟', name: 'Papas', color: '#ffcc00' },
+  { emoji: '🌭', name: 'Salchicha', color: '#ff9933' },
+  { emoji: '🥫', name: 'Salsa', color: '#ff3300' },
+  { emoji: '🫓', name: 'Arepa', color: '#ffe4b5' },
+  { emoji: '🌾', name: 'Harina', color: '#f5deb3' },
+  { emoji: '🌮', name: 'Tortilla', color: '#f5deb3' },
+  { emoji: '🍚', name: 'Arroz', color: '#ffffff' },
+  { emoji: '🐟', name: 'Pescado', color: '#a0c4ff' },
+  { emoji: '🥒', name: 'Pepino', color: '#8fbc8f' },
+  { emoji: '🍝', name: 'Fideos', color: '#ffd700' },
+  { emoji: '🥚', name: 'Huevo', color: '#fffacd' },
+  { emoji: '🥓', name: 'Tocino', color: '#ff9999' }
 ];
 
 // ─── OBJETOS PELIGROSOS (quitan vida si los atrapas) ──────────────────────
 const HAZARDS = [
-  { emoji: '💣', name: 'Bomba',       color: '#ff2222' },
-  { emoji: '🛞', name: 'Llanta',      color: '#cc3300' },
-  { emoji: '👕', name: 'Camiseta',    color: '#dd1144' },
-  { emoji: '👖', name: 'Pantalón',    color: '#cc0055' },
-  { emoji: '🧦', name: 'Calcetín',   color: '#bb2233' },
-  { emoji: '👟', name: 'Zapato',      color: '#cc1133' },
-  { emoji: '🪨', name: 'Piedra',      color: '#aa2222' },
-  { emoji: '🗑️', name: 'Basura',      color: '#bb3300' },
-  { emoji: '🧨', name: 'Dinamita',    color: '#dd2200' },
-  { emoji: '🪤', name: 'Trampa',      color: '#cc2211' },
-  { emoji: '☢️', name: 'Tóxico',      color: '#39ff14' },
-  { emoji: '✂️', name: 'Tijeras',     color: '#b0c4de' },
-  { emoji: '💩', name: 'Popó',        color: '#8b4513' },
-  { emoji: '🦠', name: 'Virus',       color: '#32cd32' },
-  { emoji: '🧪', name: 'Ácido',       color: '#00ff00' }
+  { emoji: '💣', name: 'Bomba', color: '#ff2222' },
+  { emoji: '🛞', name: 'Llanta', color: '#cc3300' },
+  { emoji: '👕', name: 'Camiseta', color: '#dd1144' },
+  { emoji: '👖', name: 'Pantalón', color: '#cc0055' },
+  { emoji: '🧦', name: 'Calcetín', color: '#bb2233' },
+  { emoji: '👟', name: 'Zapato', color: '#cc1133' },
+  { emoji: '🪨', name: 'Piedra', color: '#aa2222' },
+  { emoji: '🗑️', name: 'Basura', color: '#bb3300' },
+  { emoji: '🧨', name: 'Dinamita', color: '#dd2200' },
+  { emoji: '🪤', name: 'Trampa', color: '#cc2211' },
+  { emoji: '☢️', name: 'Tóxico', color: '#39ff14' },
+  { emoji: '✂️', name: 'Tijeras', color: '#b0c4de' },
+  { emoji: '💩', name: 'Popó', color: '#8b4513' },
+  { emoji: '🦠', name: 'Virus', color: '#32cd32' },
+  { emoji: '🧪', name: 'Ácido', color: '#00ff00' }
 ];
 
 // ─── HABILIDADES (POWER-UPS) ────────────────────────────────────────────────
@@ -78,54 +78,54 @@ const POWERUPS = [
 
 // ─── SKINS / ROPA ──────────────────────────────────────────────────────────
 const SKINS = [
-  { id: 'none',      name: 'Chef (Normal)',  src: 'imgs/remy_chef.png',       cost: 0,  desc: '¡El chef clásico!', scale: 1.2 },
-  { id: 'xmas',      name: 'Navideño',       src: 'imgs/remy_xmas.png',       cost: 40, desc: 'Pedidos: +20% Puntos' },
-  { id: 'hallow',    name: 'Halloween',      src: 'imgs/remy_halloween.png',  cost: 40, desc: '50% de Esquivar Trampas' },
-  { id: 'valentine', name: 'San Valentín',   src: 'imgs/remy_valentine.png',  cost: 35, desc: 'Pedidos: Regalan Monedas' },
-  { id: 'cowboy',    name: 'Vaquero',        src: 'imgs/remy_cowboy.png',     cost: 45, desc: 'Imán: +2 segundos' },
-  { id: 'fashion',   name: 'A la Moda',      src: 'imgs/remy_fashion.png',    cost: 60, desc: '50% de +2 🪙 Extra' },
-  { id: 'soccer',    name: 'Futbolista',     src: 'imgs/remy_soccer.png',     cost: 50, desc: 'Movimiento +35% veloz' },
-  { id: 'basket',    name: 'Básquet',        src: 'imgs/remy_basket.png',     cost: 50, desc: 'Canasta +40% más ancha' },
-  { id: 'football',  name: 'Americano',      src: 'imgs/remy_football.png',   cost: 55, desc: 'Escudo 5s al perder vida' },
-  { id: 'cheer',     name: 'Porrista',       src: 'imgs/remy_cheer.png',      cost: 45, desc: '+5 pts extra por acierto' },
-  { id: 'anime',     name: 'Anime',          src: 'imgs/remy_anime.png',      cost: 65, desc: 'Ingredientes 30% más lentos' },
-  { id: 'spring',    name: 'Primavera',      src: 'imgs/remy_spring.png',     cost: 70, desc: '25% ❤️ extra al completar pedido', scale: 1.45 }
+  { id: 'none', name: 'Chef (Normal)', src: 'imgs/remy_chef.png', cost: 0, desc: '¡El chef clásico!', scale: 1.2 },
+  { id: 'xmas', name: 'Navideño', src: 'imgs/remy_xmas.png', cost: 40, desc: 'Pedidos: +20% Puntos' },
+  { id: 'hallow', name: 'Halloween', src: 'imgs/remy_halloween.png', cost: 40, desc: '50% de Esquivar Trampas' },
+  { id: 'valentine', name: 'San Valentín', src: 'imgs/remy_valentine.png', cost: 35, desc: 'Pedidos: Regalan Monedas' },
+  { id: 'cowboy', name: 'Vaquero', src: 'imgs/remy_cowboy.png', cost: 45, desc: 'Imán: +2 segundos' },
+  { id: 'fashion', name: 'A la Moda', src: 'imgs/remy_fashion.png', cost: 60, desc: '50% de +2 🪙 Extra' },
+  { id: 'soccer', name: 'Futbolista', src: 'imgs/remy_soccer.png', cost: 50, desc: 'Movimiento +35% veloz' },
+  { id: 'basket', name: 'Básquet', src: 'imgs/remy_basket.png', cost: 50, desc: 'Canasta +40% más ancha' },
+  { id: 'football', name: 'Americano', src: 'imgs/remy_football.png', cost: 55, desc: 'Escudo 5s al perder vida' },
+  { id: 'cheer', name: 'Porrista', src: 'imgs/remy_cheer.png', cost: 45, desc: '+5 pts extra por acierto' },
+  { id: 'anime', name: 'Anime', src: 'imgs/remy_anime.png', cost: 65, desc: 'Ingredientes 30% más lentos' },
+  { id: 'spring', name: 'Primavera', src: 'imgs/remy_spring.png', cost: 70, desc: '25% ❤️ extra al completar pedido', scale: 1.45 }
 ];
 
 // ─── DISEÑOS DE CANASTA ──────────────────────────────────────────────────────
 const BASKETS = [
-  { id: 'classic',  name: 'Clásica',       cost: 0,   color1: '#b37d4e', color2: '#6e4a2c', stroke: '#4a311d', fill: '#5d3f25', decor: '' },
-  { id: 'metal',    name: 'Metálica',      cost: 50,  color1: '#e6e6e6', color2: '#999999', stroke: '#666666', fill: '#aaaaaa', decor: '' },
-  { id: 'gold',     name: 'Dorada',        cost: 200, color1: '#ffdd00', color2: '#cc8800', stroke: '#b37700', fill: '#cca300', decor: '✨' },
-  { id: 'neon',     name: 'Neón',          cost: 500, color1: '#00ffcc', color2: '#006655', stroke: '#003322', fill: '#00ccaa', decor: '⚡' },
-  { id: 'xmas',     name: 'Navidad',       cost: 150, color1: '#e63946', color2: '#2a9d8f', stroke: '#d90429', fill: '#264653', decor: '🎄' },
-  { id: 'hallow',   name: 'Halloween',     cost: 150, color1: '#f4a261', color2: '#9b5de5', stroke: '#e76f51', fill: '#3a0ca3', decor: '🎃' },
-  { id: 'spring',   name: 'Primavera',     cost: 150, imgSrc: 'imgs/basket_spring.png', desc: 'Pétalos de rosa marfil' },
-  { id: 'autumn',   name: 'Otoño',         cost: 150, color1: '#dda15e', color2: '#bc6c25', stroke: '#b0891d', fill: '#603808', decor: '🍁' },
-  { id: 'love',     name: 'San Valentín', cost: 250, color1: '#ff4d6d', color2: '#c9184a', stroke: '#a4133c', fill: '#590d22', decor: '❤️' },
-  { id: 'cowboyhat',name: 'Sombrero',      cost: 180, color1: '#8B4513', color2: '#5C2E00', stroke: '#3d1a00', fill: '#6b3410', decor: '🤠' },
-  { id: 'fashionbag',name: 'A la Moda',   cost: 200, color1: '#e91e8c', color2: '#7b0050', stroke: '#5a003a', fill: '#c2185b', decor: '👗' },
-  { id: 'soccerball',name: 'Balón ⚽',    cost: 160, color1: '#ffffff', color2: '#cccccc', stroke: '#333333', fill: '#888888', decor: '⚽' },
-  { id: 'basketball',name: 'Baloncesto',   cost: 160, color1: '#ff6f00', color2: '#e65100', stroke: '#bf360c', fill: '#cc4400', decor: '🏀' },
-  { id: 'footballhelm',name: 'Casco 🏈',  cost: 180, color1: '#1a237e', color2: '#0d1b6e', stroke: '#000033', fill: '#283593', decor: '🏈' },
-  { id: 'pompoms',  name: 'Pompones',      cost: 160, color1: '#ff4081', color2: '#c51162', stroke: '#880e4f', fill: '#e91e63', decor: '📣' },
-  { id: 'nimbus',   name: 'Nube Voladora', cost: 250, color1: '#fff176', color2: '#ffee58', stroke: '#f9a825', fill: '#fff9c4', decor: '☁️' }
+  { id: 'classic', name: 'Clásica', cost: 0, color1: '#b37d4e', color2: '#6e4a2c', stroke: '#4a311d', fill: '#5d3f25', decor: '' },
+  { id: 'metal', name: 'Metálica', cost: 50, color1: '#e6e6e6', color2: '#999999', stroke: '#666666', fill: '#aaaaaa', decor: '' },
+  { id: 'gold', name: 'Dorada', cost: 200, color1: '#ffdd00', color2: '#cc8800', stroke: '#b37700', fill: '#cca300', decor: '✨' },
+  { id: 'neon', name: 'Neón', cost: 500, color1: '#00ffcc', color2: '#006655', stroke: '#003322', fill: '#00ccaa', decor: '⚡' },
+  { id: 'xmas', name: 'Navidad', cost: 150, color1: '#e63946', color2: '#2a9d8f', stroke: '#d90429', fill: '#264653', decor: '🎄' },
+  { id: 'hallow', name: 'Halloween', cost: 150, color1: '#f4a261', color2: '#9b5de5', stroke: '#e76f51', fill: '#3a0ca3', decor: '🎃' },
+  { id: 'spring', name: 'Primavera', cost: 150, imgSrc: 'imgs/basket_spring.png', desc: 'Pétalos de rosa marfil' },
+  { id: 'autumn', name: 'Otoño', cost: 150, color1: '#dda15e', color2: '#bc6c25', stroke: '#b0891d', fill: '#603808', decor: '🍁' },
+  { id: 'love', name: 'San Valentín', cost: 250, color1: '#ff4d6d', color2: '#c9184a', stroke: '#a4133c', fill: '#590d22', decor: '❤️' },
+  { id: 'cowboyhat', name: 'Sombrero', cost: 180, color1: '#8B4513', color2: '#5C2E00', stroke: '#3d1a00', fill: '#6b3410', decor: '🤠' },
+  { id: 'fashionbag', name: 'A la Moda', cost: 200, color1: '#e91e8c', color2: '#7b0050', stroke: '#5a003a', fill: '#c2185b', decor: '👗' },
+  { id: 'soccerball', name: 'Balón ⚽', cost: 160, color1: '#ffffff', color2: '#cccccc', stroke: '#333333', fill: '#888888', decor: '⚽' },
+  { id: 'basketball', name: 'Baloncesto', cost: 160, color1: '#ff6f00', color2: '#e65100', stroke: '#bf360c', fill: '#cc4400', decor: '🏀' },
+  { id: 'footballhelm', name: 'Casco 🏈', cost: 180, color1: '#1a237e', color2: '#0d1b6e', stroke: '#000033', fill: '#283593', decor: '🏈' },
+  { id: 'pompoms', name: 'Pompones', cost: 160, color1: '#ff4081', color2: '#c51162', stroke: '#880e4f', fill: '#e91e63', decor: '📣' },
+  { id: 'nimbus', name: 'Nube Voladora', cost: 250, color1: '#fff176', color2: '#ffee58', stroke: '#f9a825', fill: '#fff9c4', decor: '☁️' }
 ];
 
 // ─── MAPA DE SPRITES (emoji → hoja + celda en cuadrícula 3x3) ───────────────────────
 const SPRITE_MAP = {
   // veggies.png — fila 0: tomate, cebolla, ajo
-  '🍅': { sheet: 'veggies',  col: 0, row: 0 },
-  '🧅': { sheet: 'veggies',  col: 1, row: 0 },
-  '🧄': { sheet: 'veggies',  col: 2, row: 0 },
+  '🍅': { sheet: 'veggies', col: 0, row: 0 },
+  '🧅': { sheet: 'veggies', col: 1, row: 0 },
+  '🧄': { sheet: 'veggies', col: 2, row: 0 },
   // fila 1: zanahoria, lechuga, limón
-  '🥕': { sheet: 'veggies',  col: 0, row: 1 },
-  '🥬': { sheet: 'veggies',  col: 1, row: 1 },
-  '🍋': { sheet: 'veggies',  col: 2, row: 1 },
+  '🥕': { sheet: 'veggies', col: 0, row: 1 },
+  '🥬': { sheet: 'veggies', col: 1, row: 1 },
+  '🍋': { sheet: 'veggies', col: 2, row: 1 },
   // fila 2: aguacate, maíz, champiñón
-  '🥑': { sheet: 'veggies',  col: 0, row: 2 },
-  '🌽': { sheet: 'veggies',  col: 1, row: 2 },
-  '🍄': { sheet: 'veggies',  col: 2, row: 2 },
+  '🥑': { sheet: 'veggies', col: 0, row: 2 },
+  '🌽': { sheet: 'veggies', col: 1, row: 2 },
+  '🍄': { sheet: 'veggies', col: 2, row: 2 },
   // proteins.png — fila 0: queso, carne, pollo
   '🧀': { sheet: 'proteins', col: 0, row: 0 },
   '🥩': { sheet: 'proteins', col: 1, row: 0 },
@@ -139,15 +139,15 @@ const SPRITE_MAP = {
   '�ae': { sheet: 'proteins', col: 1, row: 2 },
   '🌾': { sheet: 'proteins', col: 2, row: 2 },
   // others.png — fila 0: tortilla, arroz, pescado
-  '🌮': { sheet: 'others',   col: 0, row: 0 },
-  '🍚': { sheet: 'others',   col: 1, row: 0 },
-  '🐟': { sheet: 'others',   col: 2, row: 0 },
+  '🌮': { sheet: 'others', col: 0, row: 0 },
+  '🍚': { sheet: 'others', col: 1, row: 0 },
+  '🐟': { sheet: 'others', col: 2, row: 0 },
   // fila 1: pepino, fideos, huevo
-  '🥒': { sheet: 'others',   col: 0, row: 1 },
-  '🍝': { sheet: 'others',   col: 1, row: 1 },
-  '🥚': { sheet: 'others',   col: 2, row: 1 },
+  '🥒': { sheet: 'others', col: 0, row: 1 },
+  '🍝': { sheet: 'others', col: 1, row: 1 },
+  '🥚': { sheet: 'others', col: 2, row: 1 },
   // fila 2: tocón (centro)
-  '🥓': { sheet: 'others',   col: 1, row: 2 },
+  '🥓': { sheet: 'others', col: 1, row: 2 },
 };
 
 // Helper: dibuja un ingrediente desde su sprite sheet. Devuelve true si lo
@@ -157,19 +157,19 @@ function drawItemSprite(emoji, size) {
     drawCustomArepa(ctx, 0, 0, size);
     return true;
   }
-  
+
   // Caso especial: Tocino (queremos ver las 3 tiras de la imagen)
   if (emoji === '🥓') {
     const info = SPRITE_MAP['🥓'];
     const sheet = ASSETS.sprites[info.sheet];
     if (!sheet || !sheet.complete || sheet.naturalWidth === 0) return false;
-    
+
     const cellH = sheet.naturalHeight / 3;
     const sy = info.row * cellH;
     // Dibujamos toda la fila (las 3 tiras) y lo hacemos un poco más ancho
-    const aspect = 1.5; 
+    const aspect = 1.5;
     const drawW = size * aspect;
-    ctx.drawImage(sheet, 0, sy, sheet.naturalWidth, cellH, -drawW/2, -size/2, drawW, size);
+    ctx.drawImage(sheet, 0, sy, sheet.naturalWidth, cellH, -drawW / 2, -size / 2, drawW, size);
     return true;
   }
 
@@ -177,7 +177,7 @@ function drawItemSprite(emoji, size) {
   if (!info) return false;
   const sheet = ASSETS.sprites[info.sheet];
   if (!sheet || !sheet.complete || sheet.naturalWidth === 0) return false;
-  const cellW = sheet.naturalWidth  / 3;
+  const cellW = sheet.naturalWidth / 3;
   const cellH = sheet.naturalHeight / 3;
   const sx = info.col * cellW;
   const sy = info.row * cellH;
@@ -190,30 +190,30 @@ function drawItemSprite(emoji, size) {
 function drawCustomArepa(targetCtx, x, y, size) {
   targetCtx.save();
   targetCtx.translate(x, y);
-  
+
   // 1. Cuerpo de la Arepa (Masa)
   targetCtx.beginPath();
   targetCtx.arc(0, 0, size * 0.45, 0, Math.PI * 2);
-  targetCtx.fillStyle = '#fffceb'; 
+  targetCtx.fillStyle = '#fffceb';
   targetCtx.fill();
-  
+
   // 2. Sombras de relieve
-  const grad = targetCtx.createRadialGradient(-size*0.1, -size*0.1, 0, 0, 0, size * 0.45);
+  const grad = targetCtx.createRadialGradient(-size * 0.1, -size * 0.1, 0, 0, 0, size * 0.45);
   grad.addColorStop(0, 'rgba(255,255,255,0.8)');
-  grad.addColorStop(1, 'rgba(210,180,140,0.4)'); 
+  grad.addColorStop(1, 'rgba(210,180,140,0.4)');
   targetCtx.fillStyle = grad;
   targetCtx.fill();
 
   // 3. PECAS DE TOSTADO
   const spots = [
-    {x: -size*0.2, y: -size*0.1, r: size*0.08}, 
-    {x: size*0.15, y: size*0.25, r: size*0.1}, 
-    {x: -size*0.25, y: size*0.3, r: size*0.06},
-    {x: size*0.3, y: -size*0.15, r: size*0.08}, 
-    {x: size*0.05, y: size*0.05, r: size*0.12}, 
-    {x: -size*0.1, y: -size*0.35, r: size*0.06}
+    { x: -size * 0.2, y: -size * 0.1, r: size * 0.08 },
+    { x: size * 0.15, y: size * 0.25, r: size * 0.1 },
+    { x: -size * 0.25, y: size * 0.3, r: size * 0.06 },
+    { x: size * 0.3, y: -size * 0.15, r: size * 0.08 },
+    { x: size * 0.05, y: size * 0.05, r: size * 0.12 },
+    { x: -size * 0.1, y: -size * 0.35, r: size * 0.06 }
   ];
-  targetCtx.fillStyle = 'rgba(139, 69, 19, 0.6)'; 
+  targetCtx.fillStyle = 'rgba(139, 69, 19, 0.6)';
   spots.forEach(s => {
     targetCtx.beginPath();
     targetCtx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
@@ -221,10 +221,10 @@ function drawCustomArepa(targetCtx, x, y, size) {
   });
 
   // 4. QUESO
-  targetCtx.fillStyle = '#ffd700'; 
+  targetCtx.fillStyle = '#ffd700';
   targetCtx.beginPath();
-  targetCtx.moveTo(size*0.2, -size*0.1);
-  targetCtx.quadraticCurveTo(size*0.45, 0, size*0.3, size*0.2);
+  targetCtx.moveTo(size * 0.2, -size * 0.1);
+  targetCtx.quadraticCurveTo(size * 0.45, 0, size * 0.3, size * 0.2);
   targetCtx.closePath();
   targetCtx.fill();
 
@@ -238,21 +238,21 @@ function drawCustomArepa(targetCtx, x, y, size) {
 
 // ─── CONFIGURACIÓN ──────────────────────────────────────────────────────────
 const CONFIG = {
-  maxLives:          3,
-  baseSpeed:         2.5,
-  speedIncrement:    0.15,
-  levelUpEvery:      3,         // pedidos completados para subir de nivel
-  maxLevel:          15,
-  barHeight:         18,
-  barColor:          '#ffd93d',
-  barBorderColor:    '#ff8e53',
-  barGlow:           'rgba(255,217,61,.45)',
-  baseFallRate:      1600,
-  minFallRate:       350,
-  fontSize:          36,
-  maxSimultaneous:   5,
-  hazardBaseChance:  0.30,
-  hazardMaxChance:   0.60,
+  maxLives: 3,
+  baseSpeed: 2.5,
+  speedIncrement: 0.15,
+  levelUpEvery: 3,         // pedidos completados para subir de nivel
+  maxLevel: 15,
+  barHeight: 18,
+  barColor: '#ffd93d',
+  barBorderColor: '#ff8e53',
+  barGlow: 'rgba(255,217,61,.45)',
+  baseFallRate: 1600,
+  minFallRate: 350,
+  fontSize: 36,
+  maxSimultaneous: 5,
+  hazardBaseChance: 0.30,
+  hazardMaxChance: 0.60,
 };
 
 // ─── DATOS DEL JUGADOR (localStorage) ───────────────────────────────────────
@@ -301,7 +301,7 @@ const PlayerData = {
       this.data.bestScore = score;
       changed = true;
     }
-    
+
     // Lógica de Top 3 Local
     if (score > 0) {
       if (!this.data.leaderboard) this.data.leaderboard = [];
@@ -331,7 +331,7 @@ PlayerData.save();
 // ─── SISTEMA DE ANUNCIOS ──────────────────────────────────────────────────────
 const AdSystem = {
   _rewardCb: null,
-  _failCb:   null,
+  _failCb: null,
 
   init() {
     window._gdEventHandler = (event) => {
@@ -353,7 +353,7 @@ const AdSystem = {
 
   showRewarded(onReward, onFail) {
     this._rewardCb = onReward;
-    this._failCb   = onFail;
+    this._failCb = onFail;
     document.getElementById('ad-overlay').classList.remove('hidden');
 
     if (typeof gdsdk !== 'undefined' && gdsdk.AdType) {
@@ -388,23 +388,23 @@ const SoundSystem = {
     return this.muted;
   },
 
-  playTone(freq, type, duration, vol=0.1) {
+  playTone(freq, type, duration, vol = 0.1) {
     if (this.muted) return;
     this.init();
     if (this.ctx.state === 'suspended') this.ctx.resume();
-    
+
     const osc = this.ctx.createOscillator();
     const gain = this.ctx.createGain();
-    
+
     osc.type = type;
     osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
-    
+
     gain.gain.setValueAtTime(vol, this.ctx.currentTime);
     gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + duration);
-    
+
     osc.connect(gain);
     gain.connect(this.ctx.destination);
-    
+
     osc.start();
     osc.stop(this.ctx.currentTime + duration);
   },
@@ -428,35 +428,35 @@ const SoundSystem = {
   startMenuMusic() {
     if (this.menuMusicId || this.muted) return;
     this.init();
-    
+
     // Forzar reanudación del contexto de audio
     if (this.ctx.state === 'suspended') {
       this.ctx.resume();
     }
-    
+
     const playTune = () => {
       if (this.muted) return;
       if (state.running && !state.paused) return;
-      
+
       // Melodía inspirada en Terraria (Overworld Day)
       // Estilo saltarín con ritmo sincopado
       const tune = [
-        {f: 392.00, t: 0.12, d: 0},    // G4
-        {f: 392.00, t: 0.12, d: 200},  // G4
-        {f: 493.88, t: 0.12, d: 400},  // B4
-        {f: 523.25, t: 0.12, d: 550},  // C5
-        {f: 587.33, t: 0.12, d: 700},  // D5
-        {f: 392.00, t: 0.12, d: 1000}, // G4
-        {f: 783.99, t: 0.12, d: 1150}, // G5 (salto!)
-        {f: 587.33, t: 0.12, d: 1350}, // D5
-        {f: 493.88, t: 0.12, d: 1550}, // B4
-        {f: 440.00, t: 0.12, d: 1750}  // A4
+        { f: 392.00, t: 0.12, d: 0 },    // G4
+        { f: 392.00, t: 0.12, d: 200 },  // G4
+        { f: 493.88, t: 0.12, d: 400 },  // B4
+        { f: 523.25, t: 0.12, d: 550 },  // C5
+        { f: 587.33, t: 0.12, d: 700 },  // D5
+        { f: 392.00, t: 0.12, d: 1000 }, // G4
+        { f: 783.99, t: 0.12, d: 1150 }, // G5 (salto!)
+        { f: 587.33, t: 0.12, d: 1350 }, // D5
+        { f: 493.88, t: 0.12, d: 1550 }, // B4
+        { f: 440.00, t: 0.12, d: 1750 }  // A4
       ];
 
       tune.forEach((note) => {
         setTimeout(() => {
           if ((!state.running || state.paused) && !this.muted) {
-            this.playTone(note.f, 'square', note.t, 0.05); 
+            this.playTone(note.f, 'square', note.t, 0.05);
           }
         }, note.d);
       });
@@ -483,28 +483,28 @@ const STORY_MISSIONS = [
 
 function createState() {
   return {
-    running:    false,
-    paused:     false,
-    lives:      CONFIG.maxLives,
-    score:      0,
-    level:      1,
-    caught:     0,
+    running: false,
+    paused: false,
+    lives: CONFIG.maxLives,
+    score: 0,
+    level: 1,
+    caught: 0,
     completedOrders: 0,
-    items:      [],
+    items: [],
     currentOrder: null,
     orderProgress: [],
-    barX:       0,
-    barW:       80, // Ajustado para la canasta
-    speed:      CONFIG.baseSpeed,
-    fallTimer:  null,
-    animFrame:  null,
-    lastTime:   0,
-    canRevive:  true,
-    happyAnimTime: 0, 
+    barX: 0,
+    barW: 80, // Ajustado para la canasta
+    speed: CONFIG.baseSpeed,
+    fallTimer: null,
+    animFrame: null,
+    lastTime: 0,
+    canRevive: true,
+    happyAnimTime: 0,
     magnetTime: 0, // Tiempo de duración del imán mágico
     invincibleUntil: 0, // Tiempo de invulnerabilidad después de recibir daño
-    failCause:  null, 
-    trapHordeActive: false, 
+    failCause: null,
+    trapHordeActive: false,
     nextHordeTime: 0,
     dizziness: 0,
     isDrunk: false,
@@ -530,19 +530,19 @@ const ASSETS = {
   bgImages: {},          // Fondos temáticos adicionales
   currentBgIndex: 0,     // Índice del fondo actual
   sprites: {
-    veggies:  new Image(),
+    veggies: new Image(),
     proteins: new Image(),
-    others:   new Image()
+    others: new Image()
   }
 };
 
 // ─── TEMAS DE FONDO (rotan cada nivel) ───────────────────────────────────────
 const BG_THEMES = [
-  { id: 'kitchen',   label: 'Cocina',      img: 'kitchen_bg.png',   overlay: 'rgba(10,5,20,0.72)',    draw: null },
-  { id: 'halloween', label: 'Halloween',   img: 'imgs/bg_halloween.jpg', overlay: 'rgba(5,0,15,0.50)',     draw: 'halloween' },
-  { id: 'soccer',    label: 'Fútbol',     img: 'imgs/bg_soccer.jpg', overlay: 'rgba(0,20,5,0.65)',     draw: 'soccer' },
-  { id: 'xmas',      label: 'Navidad',     img: 'imgs/bg_xmas.jpg', overlay: 'rgba(10,0,5,0.55)',     draw: 'xmas' },
-  { id: 'anime',     label: 'Anime',       img: 'imgs/bg_anime.png', overlay: 'rgba(10,0,30,0.60)',   draw: null },
+  { id: 'kitchen', label: 'Cocina', img: 'kitchen_bg.png', overlay: 'rgba(10,5,20,0.72)', draw: null },
+  { id: 'halloween', label: 'Halloween', img: 'imgs/bg_halloween.jpg', overlay: 'rgba(5,0,15,0.50)', draw: 'halloween' },
+  { id: 'soccer', label: 'Fútbol', img: 'imgs/bg_soccer.jpg', overlay: 'rgba(0,20,5,0.65)', draw: 'soccer' },
+  { id: 'xmas', label: 'Navidad', img: 'imgs/bg_xmas.jpg', overlay: 'rgba(10,0,5,0.55)', draw: 'xmas' },
+  { id: 'anime', label: 'Anime', img: 'imgs/bg_anime.png', overlay: 'rgba(10,0,30,0.60)', draw: null },
 ];
 
 // Pre-cargar los fondos con imagen
@@ -553,14 +553,14 @@ BG_THEMES.forEach(t => {
     ASSETS.bgImages[t.id] = img;
   }
 });
-ASSETS.sprites.veggies.src  = 'imgs/veggies.png';
+ASSETS.sprites.veggies.src = 'imgs/veggies.png';
 ASSETS.sprites.proteins.src = 'imgs/proteins.png';
-ASSETS.sprites.others.src   = 'imgs/others.png';
+ASSETS.sprites.others.src = 'imgs/others.png';
 
 // Función para remover fondo blanco de las skins
 function processWhiteBackground(img) {
-  const oc  = document.createElement('canvas');
-  oc.width  = img.naturalWidth;
+  const oc = document.createElement('canvas');
+  oc.width = img.naturalWidth;
   oc.height = img.naturalHeight;
   const octx = oc.getContext('2d');
   octx.drawImage(img, 0, 0);
@@ -569,10 +569,10 @@ function processWhiteBackground(img) {
   const d = imgData.data;
 
   for (let i = 0; i < d.length; i += 4) {
-    const r = d[i], g = d[i+1], b = d[i+2];
+    const r = d[i], g = d[i + 1], b = d[i + 2];
     if (r > 220 && g > 220 && b > 220) {
       const whiteness = Math.min(r, g, b);
-      d[i+3] = Math.max(0, 255 - Math.round((whiteness - 220) * (255 / 35)));
+      d[i + 3] = Math.max(0, 255 - Math.round((whiteness - 220) * (255 / 35)));
     }
   }
   octx.putImageData(imgData, 0, 0);
@@ -598,12 +598,12 @@ SKINS.forEach(skin => {
   ASSETS.skinImages[skin.id] = img;
 });
 
-const canvas  = document.getElementById('gameCanvas');
-const ctx     = canvas.getContext('2d');
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
 
 function resizeCanvas() {
   const container = canvas.parentElement;
-  canvas.width  = container.clientWidth;
+  canvas.width = container.clientWidth;
   canvas.height = container.clientHeight;
   if (state.barX === 0) {
     state.barX = canvas.width / 2 - state.barW / 2;
@@ -617,23 +617,23 @@ function showScreen(id) {
 
 // ─── INICIAR / REINICIAR ─────────────────────────────────────────────────────
 function startGame(mode = 'classic') {
-  if (state.animFrame)  cancelAnimationFrame(state.animFrame);
-  if (state.fallTimer)  clearInterval(state.fallTimer);
+  if (state.animFrame) cancelAnimationFrame(state.animFrame);
+  if (state.fallTimer) clearInterval(state.fallTimer);
 
   SoundSystem.init();
-  SoundSystem.stopMenuMusic(); 
+  SoundSystem.stopMenuMusic();
 
   state = createState();
   state.gameMode = mode; // Asignar el modo antes de configurar la UI
   state.barX = canvas.width / 2 - state.barW / 2;
   state.running = true;
-  state.nextHordeTime = Date.now() + 45000; 
+  state.nextHordeTime = Date.now() + 45000;
   state.nextBgChangeTime = Date.now() + 45000; // Primer cambio en 45 seg
   // Configuración específica por modo
   const timerHud = document.getElementById('timer-hud');
   const customerArea = document.getElementById('customer-area'); // El cuadro de ingredientes
   const hudRecipe = document.querySelector('.sidebar-title'); // El texto "Faltan:"
-  
+
   if (state.gameMode === 'time') {
     state.gameTimer = 90;
     if (timerHud) {
@@ -731,10 +731,10 @@ function update(dt) {
 
   // En Supervivencia, la dificultad sube con el tiempo
   if (state.gameMode === 'survival') {
-    state.speed += 0.0004 * dt; 
+    state.speed += 0.0004 * dt;
     // Aumentar la intensidad de aparición (frecuencia) poco a poco hasta un tope de 2.2
     if (state.survivalIntensity < 2.2) {
-        state.survivalIntensity += 0.0001 * dt;
+      state.survivalIntensity += 0.0001 * dt;
     }
   }
 
@@ -771,7 +771,7 @@ function update(dt) {
 
   // HABILIDAD FUTBOLISTA: Movimiento 35% más rápido
   const moveSpeed = PlayerData.data.activeSkin === 'soccer' ? 9.45 : 7;
-  if (keys.ArrowLeft)  state.barX = Math.max(0, state.barX - moveSpeed * dt);
+  if (keys.ArrowLeft) state.barX = Math.max(0, state.barX - moveSpeed * dt);
   if (keys.ArrowRight) state.barX = Math.min(canvas.width - state.barW, state.barX + moveSpeed * dt);
 
   if (state.dizziness > 0) {
@@ -816,124 +816,124 @@ function draw() {
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
 
-    for (const item of state.items) {
-      ctx.save();
-      ctx.translate(item.x, item.y);
+  for (const item of state.items) {
+    ctx.save();
+    ctx.translate(item.x, item.y);
 
-      // --- 1. RESALTADO (Aura/Luz) ---
-      // Lo dibujamos ANTES de rotar/escalar para que el aura sea estable y circular
-      if (!item.isBad && !item.isPowerup && isIngredientNeeded(item.emoji)) {
-        ctx.shadowColor = '#6bcb77';
-        ctx.shadowBlur = 30;
-        
+    // --- 1. RESALTADO (Aura/Luz) ---
+    // Lo dibujamos ANTES de rotar/escalar para que el aura sea estable y circular
+    if (!item.isBad && !item.isPowerup && isIngredientNeeded(item.emoji)) {
+      ctx.shadowColor = '#6bcb77';
+      ctx.shadowBlur = 30;
+
+      ctx.beginPath();
+      // Si es tocino, el aura es más ancha para cubrir las 3 tiras
+      const auraSize = (item.emoji === '🥓') ? CONFIG.fontSize * 1.1 : CONFIG.fontSize * 0.65;
+      ctx.arc(0, 0, auraSize, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(107, 203, 119, 0.3)';
+      ctx.fill();
+    }
+
+    // Sombra de contraste para el objeto
+    ctx.shadowColor = 'rgba(0,0,0,0.8)';
+    ctx.shadowBlur = 15;
+
+    // --- 2. TRANSFORMACIONES (Giro y Rotación) ---
+    const spinScale = Math.cos(Date.now() * item.spinSpeed + item.spinPhase);
+    ctx.scale(spinScale, 1);
+    ctx.rotate(item.rot);
+
+    // --- 3. DIBUJO DEL OBJETO ---
+    if (item.isBad) {
+      // (Lógica de trampa se mantiene igual...)
+      const pulse = 0.7 + 0.3 * Math.sin(Date.now() * 0.008);
+      ctx.shadowBlur = 0;
+      ctx.fillStyle = `rgba(255, 30, 30, ${0.4 * pulse})`;
+      ctx.beginPath();
+      ctx.arc(0, 0, CONFIG.fontSize * 0.7, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = `rgba(255, 30, 30, ${0.8 * pulse})`;
+      ctx.lineWidth = 3;
+      ctx.setLineDash([4, 4]);
+      ctx.beginPath();
+      ctx.arc(0, 0, CONFIG.fontSize * 0.72, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = '#ffffff';
+      const drawn = drawItemSprite(item.emoji, CONFIG.fontSize * 1.6);
+      if (!drawn) ctx.fillText(item.emoji, 0, 0);
+      ctx.font = '13px serif';
+      ctx.shadowBlur = 0;
+      ctx.fillText('⚠️', CONFIG.fontSize * 0.55, -CONFIG.fontSize * 0.55);
+      ctx.font = `${CONFIG.fontSize}px serif`;
+    } else {
+      // Ingredientes normales
+      ctx.shadowColor = 'rgba(0,0,0,1)';
+      ctx.shadowBlur = 12;
+
+      // VISIBILIDAD ESPECIAL: Monedas (Estilo Metálico Brillante)
+      if (item.emoji === '🪙') {
         ctx.beginPath();
-        // Si es tocino, el aura es más ancha para cubrir las 3 tiras
-        const auraSize = (item.emoji === '🥓') ? CONFIG.fontSize * 1.1 : CONFIG.fontSize * 0.65;
-        ctx.arc(0, 0, auraSize, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(107, 203, 119, 0.3)';
+        ctx.arc(0, 0, CONFIG.fontSize * 0.65, 0, Math.PI * 2);
+        ctx.fillStyle = '#ffffff'; // Fondo blanco para contraste
         ctx.fill();
+
+        ctx.shadowColor = '#ffd700';
+        ctx.shadowBlur = 35;
+        ctx.strokeStyle = '#b8860b'; // Borde dorado oscuro
+        ctx.lineWidth = 2.5;
+        ctx.stroke();
+
+        // Efecto de Destello (Sparkle)
+        const s = Math.sin(Date.now() * 0.01) * 5;
+        ctx.fillStyle = '#fff';
+        ctx.beginPath();
+        ctx.moveTo(-s, 0); ctx.lineTo(0, -s - 10); ctx.lineTo(s, 0); ctx.lineTo(0, s + 10); ctx.fill();
+        ctx.beginPath();
+        ctx.moveTo(0, -s); ctx.lineTo(-s - 10, 0); ctx.lineTo(0, s); ctx.lineTo(s + 10, 0); ctx.fill();
       }
 
-      // Sombra de contraste para el objeto
-      ctx.shadowColor = 'rgba(0,0,0,0.8)';
-      ctx.shadowBlur = 15;
-
-      // --- 2. TRANSFORMACIONES (Giro y Rotación) ---
-      const spinScale = Math.cos(Date.now() * item.spinSpeed + item.spinPhase);
-      ctx.scale(spinScale, 1);
-      ctx.rotate(item.rot);
-
-      // --- 3. DIBUJO DEL OBJETO ---
-      if (item.isBad) {
-        // (Lógica de trampa se mantiene igual...)
-        const pulse = 0.7 + 0.3 * Math.sin(Date.now() * 0.008);
-        ctx.shadowBlur = 0;
-        ctx.fillStyle = `rgba(255, 30, 30, ${0.4 * pulse})`;
-        ctx.beginPath();
-        ctx.arc(0, 0, CONFIG.fontSize * 0.7, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.strokeStyle = `rgba(255, 30, 30, ${0.8 * pulse})`;
-        ctx.lineWidth = 3;
-        ctx.setLineDash([4, 4]);
-        ctx.beginPath();
-        ctx.arc(0, 0, CONFIG.fontSize * 0.72, 0, Math.PI * 2);
-        ctx.stroke();
-        ctx.setLineDash([]);
-        ctx.fillStyle = '#ffffff';
-        const drawn = drawItemSprite(item.emoji, CONFIG.fontSize * 1.6);
-        if (!drawn) ctx.fillText(item.emoji, 0, 0);
-        ctx.font = '13px serif';
-        ctx.shadowBlur = 0;
-        ctx.fillText('⚠️', CONFIG.fontSize * 0.55, -CONFIG.fontSize * 0.55);
-        ctx.font = `${CONFIG.fontSize}px serif`;
-      } else {
-        // Ingredientes normales
-        ctx.shadowColor = 'rgba(0,0,0,1)';
-        ctx.shadowBlur = 12;
-
-        // VISIBILIDAD ESPECIAL: Monedas (Estilo Metálico Brillante)
-        if (item.emoji === '🪙') {
-          ctx.beginPath();
-          ctx.arc(0, 0, CONFIG.fontSize * 0.65, 0, Math.PI * 2);
-          ctx.fillStyle = '#ffffff'; // Fondo blanco para contraste
-          ctx.fill();
-          
-          ctx.shadowColor = '#ffd700';
+      // VISIBILIDAD ESPECIAL: Arepas (Usando función unificada)
+      if (item.emoji === '🫓') {
+        if (isIngredientNeeded('🫓')) {
+          // Resaltado verde para cuando es necesaria
+          ctx.shadowColor = '#6bcb77';
           ctx.shadowBlur = 35;
-          ctx.strokeStyle = '#b8860b'; // Borde dorado oscuro
-          ctx.lineWidth = 2.5;
+
+          ctx.beginPath();
+          ctx.arc(0, 0, CONFIG.fontSize * 0.75, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(107, 203, 119, 0.4)';
+          ctx.fill();
+
+          // Borde verde extra para que se note en el blanco
+          ctx.strokeStyle = '#6bcb77';
+          ctx.lineWidth = 3;
           ctx.stroke();
-
-          // Efecto de Destello (Sparkle)
-          const s = Math.sin(Date.now() * 0.01) * 5;
-          ctx.fillStyle = '#fff';
-          ctx.beginPath();
-          ctx.moveTo(-s, 0); ctx.lineTo(0, -s-10); ctx.lineTo(s, 0); ctx.lineTo(0, s+10); ctx.fill();
-          ctx.beginPath();
-          ctx.moveTo(0, -s); ctx.lineTo(-s-10, 0); ctx.lineTo(0, s); ctx.lineTo(s+10, 0); ctx.fill();
+        } else {
+          ctx.shadowColor = 'rgba(0,0,0,0.5)';
+          ctx.shadowBlur = 15;
         }
 
-        // VISIBILIDAD ESPECIAL: Arepas (Usando función unificada)
-        if (item.emoji === '🫓') {
-          if (isIngredientNeeded('🫓')) {
-            // Resaltado verde para cuando es necesaria
-            ctx.shadowColor = '#6bcb77';
-            ctx.shadowBlur = 35;
-            
-            ctx.beginPath();
-            ctx.arc(0, 0, CONFIG.fontSize * 0.75, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(107, 203, 119, 0.4)';
-            ctx.fill();
+        drawItemSprite('🫓', CONFIG.fontSize * 1.5);
+        ctx.restore();
+        continue;
+      }
 
-            // Borde verde extra para que se note en el blanco
-            ctx.strokeStyle = '#6bcb77';
-            ctx.lineWidth = 3;
-            ctx.stroke();
-          } else {
-            ctx.shadowColor = 'rgba(0,0,0,0.5)';
-            ctx.shadowBlur = 15;
-          }
-          
-          drawItemSprite('🫓', CONFIG.fontSize * 1.5);
-          ctx.restore();
-          continue; 
-        }
-      
       // Si es un imán, le damos un brillo especial tipo Subway Surfers
       if (item.type === 'magnet') {
         const pulse = Math.sin(Date.now() * 0.01) * 10 + 20; // Pulso dinámico
         ctx.shadowBlur = 0; // Optimizado sin lag
-        
+
         // Aura exterior adicional
         ctx.beginPath();
-        ctx.arc(0, 0, 30 + pulse/5, 0, Math.PI * 2);
+        ctx.arc(0, 0, 30 + pulse / 5, 0, Math.PI * 2);
         ctx.fillStyle = 'rgba(255, 51, 51, 0.2)';
         ctx.fill();
 
         if (ASSETS.magnet.complete) {
           ctx.drawImage(ASSETS.magnet, -25, -25, 50, 50);
           ctx.restore();
-          continue; 
+          continue;
         }
       }
 
@@ -953,7 +953,7 @@ function drawBar() {
   const bx = state.barX;
   const by = canvas.height - 20; // Base (piso)
   const bw = state.barW;
-  
+
   let yAnim = 0;
   // Si está feliz, da pequeños saltos
   if (state.happyAnimTime > Date.now()) {
@@ -974,13 +974,13 @@ function drawBar() {
   // Sombra suave en el piso
   ctx.fillStyle = 'rgba(0,0,0,0.3)';
   ctx.beginPath();
-  ctx.ellipse(bx + bw/2, by + 5, 35, 8, 0, 0, Math.PI * 2);
+  ctx.ellipse(bx + bw / 2, by + 5, 35, 8, 0, 0, Math.PI * 2);
   ctx.fill();
 
   const skin = SKINS.find(s => s.id === PlayerData.data.activeSkin) || SKINS[0];
   const scl = skin.scale || 1.0;
-  const remyW = 160 * scl; 
-  const remyH = 195 * scl; 
+  const remyW = 160 * scl;
+  const remyH = 195 * scl;
   const skinId = skin.id;
 
   // Imán activo: Dibujar imán flotando sobre el ratón
@@ -989,10 +989,10 @@ function drawBar() {
       const pulseY = Math.sin(Date.now() * 0.01) * 5;
       const magW = 50;
       const magH = 50;
-      ctx.drawImage(ASSETS.magnet, bx + bw/2 - magW/2, by - remyH - 35 + yAnim + pulseY, magW, magH);
+      ctx.drawImage(ASSETS.magnet, bx + bw / 2 - magW / 2, by - remyH - 35 + yAnim + pulseY, magW, magH);
     }
   }
-  
+
   const cleanCanvas = ASSETS.skinCleanCanvas[skinId] || ASSETS.skinCleanCanvas['none'];
   const rawImage = ASSETS.skinImages[skinId] || ASSETS.skinImages['none'];
 
@@ -1000,13 +1000,13 @@ function drawBar() {
   // Efecto borracho: Balanceo
   if (state.isDrunk) {
     const wobble = Math.sin(Date.now() * 0.01) * 15;
-    ctx.translate(bx + bw/2, by - remyH/2);
+    ctx.translate(bx + bw / 2, by - remyH / 2);
     ctx.rotate(wobble * Math.PI / 180);
-    ctx.translate(-(bx + bw/2), -(by - remyH/2));
+    ctx.translate(-(bx + bw / 2), -(by - remyH / 2));
 
     // Dibujar quesos mareados sobre la cabeza
     ctx.save();
-    const centerX = bx + bw/2;
+    const centerX = bx + bw / 2;
     const centerY = by - remyH - 20 + yAnim;
     for (let i = 0; i < 3; i++) {
       const angle = (Date.now() * 0.005) + (i * Math.PI * 2 / 3);
@@ -1020,13 +1020,13 @@ function drawBar() {
 
   if (cleanCanvas) {
     // Usar el canvas procesado (fondo transparente)
-    ctx.drawImage(cleanCanvas, bx + bw/2 - remyW/2, by - remyH + 10 + yAnim, remyW, remyH);
+    ctx.drawImage(cleanCanvas, bx + bw / 2 - remyW / 2, by - remyH + 10 + yAnim, remyW, remyH);
   } else if (rawImage && rawImage.complete && rawImage.naturalWidth > 0) {
-    ctx.drawImage(rawImage, bx + bw/2 - remyW/2, by - remyH + 10 + yAnim, remyW, remyH);
+    ctx.drawImage(rawImage, bx + bw / 2 - remyW / 2, by - remyH + 10 + yAnim, remyW, remyH);
   } else {
     // Fallback
     ctx.font = '45px serif';
-    ctx.fillText('🐭', bx + bw/2, by - 75 + yAnim);
+    ctx.fillText('🐭', bx + bw / 2, by - 75 + yAnim);
   }
   ctx.restore();
 
@@ -1035,10 +1035,10 @@ function drawBar() {
   if (ASSETS.baskets[activeB] && ASSETS.baskets[activeB].complete) {
     // La SVG ahora tiene un viewBox de -30 a 110 en X, y de -30 a 70 en Y.
     // Para mantener la canasta central en la misma posición (que era 80x60 en x-40, y-35):
-    ctx.drawImage(ASSETS.baskets[activeB], bx + bw/2 - 70, by - 65 + yAnim, 140, 100);
+    ctx.drawImage(ASSETS.baskets[activeB], bx + bw / 2 - 70, by - 65 + yAnim, 140, 100);
   } else {
     ctx.font = '65px serif';
-    ctx.fillText('🧺', bx + bw/2, by + 5 + yAnim);
+    ctx.fillText('🧺', bx + bw / 2, by + 5 + yAnim);
   }
 
   ctx.restore();
@@ -1047,7 +1047,7 @@ function drawBar() {
 // ─── LÓGICA DE PEDIDOS ────────────────────────────────────────────────────────
 function generateOrder() {
   let recipe;
-  
+
   if (state.gameMode === 'story') {
     const mission = STORY_MISSIONS[PlayerData.data.storyLevel - 1];
     if (!mission) {
@@ -1058,8 +1058,8 @@ function generateOrder() {
       return;
     }
     const reqs = [];
-    for(let e in mission.target) {
-      for(let i=0; i<mission.target[e]; i++) reqs.push(e);
+    for (let e in mission.target) {
+      for (let i = 0; i < mission.target[e]; i++) reqs.push(e);
     }
     recipe = { name: mission.title, emoji: '🌟', ingredients: reqs, desc: mission.desc };
   } else {
@@ -1068,7 +1068,7 @@ function generateOrder() {
 
   state.currentOrder = recipe;
   state.orderProgress = [];
-  
+
   const charEl = document.getElementById('customer-character');
   const bubble = document.getElementById('speech-bubble');
   const bubbleOrder = document.getElementById('bubble-order');
@@ -1081,7 +1081,7 @@ function generateOrder() {
   // Asignar cliente y orden
   charEl.textContent = CUSTOMERS[Math.floor(Math.random() * CUSTOMERS.length)];
   bubbleOrder.textContent = `${recipe.emoji} ${recipe.name}`;
-  
+
   const bubbleText = bubble.querySelector('.bubble-text');
   if (state.gameMode === 'story') {
     if (bubbleText) bubbleText.innerHTML = `¡Nivel ${PlayerData.data.storyLevel}!<br /><span style="font-size:0.8rem">${recipe.desc}</span>`;
@@ -1089,7 +1089,7 @@ function generateOrder() {
     const article = recipe.gender === 'f' ? 'una' : 'un';
     if (bubbleText) bubbleText.innerHTML = `¡Hola!<br />Quiero ${article}`;
   }
-  
+
   // Animar llegada
   setTimeout(() => {
     charEl.classList.add('arrived');
@@ -1110,15 +1110,15 @@ function generateOrder() {
 function updateCustomerUI() {
   const container = document.getElementById('order-ingredients');
   container.innerHTML = '';
-  
+
   // Contar requerimientos
   const required = {};
   state.currentOrder.ingredients.forEach(i => required[i] = (required[i] || 0) + 1);
-  
+
   // Contar progreso
   const progress = {};
   state.orderProgress.forEach(i => progress[i] = (progress[i] || 0) + 1);
-  
+
   // Renderizar chips
   for (const [emoji, total] of Object.entries(required)) {
     const current = progress[emoji] || 0;
@@ -1126,7 +1126,7 @@ function updateCustomerUI() {
       const chip = document.createElement('div');
       chip.className = 'req-chip';
       if (i < current) chip.classList.add('caught');
-      
+
       const info = SPRITE_MAP[emoji];
       if (emoji === '🫓') {
         const arepaCanvas = document.createElement('canvas');
@@ -1204,7 +1204,7 @@ function scheduleNextFall() {
           if (state.running && !state.paused) spawnIngredient();
         }, i * 500);
       }
-      
+
       scheduleNextFall();
     }
   }, rate + Math.random() * 200);
@@ -1218,7 +1218,7 @@ function spawnIngredient() {
     CONFIG.hazardMaxChance,
     CONFIG.hazardBaseChance + (state.level - 1) * 0.025
   );
-  
+
   let isBad = false;
   let isPowerup = false;
   let ing = null;
@@ -1232,7 +1232,7 @@ function spawnIngredient() {
   else if (Math.random() < 0.02) {
     isPowerup = true;
     ing = POWERUPS[0];
-  } 
+  }
   // SI HAY HORDA ACTIVA, SOLO LANZAR TRAMPAS
   else if (state.trapHordeActive) {
     isBad = true;
@@ -1250,7 +1250,7 @@ function spawnIngredient() {
         ing = INGREDIENTS.find(i => i.emoji === targetEmoji);
       }
     }
-    
+
     // Si no se asignó (40% chance o no hay needed), lanzar aleatorio
     if (!ing) {
       ing = INGREDIENTS[Math.floor(Math.random() * INGREDIENTS.length)];
@@ -1259,18 +1259,18 @@ function spawnIngredient() {
 
   const size = CONFIG.fontSize;
   const item = {
-    emoji:    ing.emoji,
-    name:     ing.name,
-    color:    ing.color,
-    isBad:    isBad,
+    emoji: ing.emoji,
+    name: ing.name,
+    color: ing.color,
+    isBad: isBad,
     isPowerup: isPowerup,
-    type:     ing.type || null,
-    x:        0, // Se calcula abajo
-    y:        -size,
-    rot:      (Math.random() - .5) * Math.PI,
+    type: ing.type || null,
+    x: 0, // Se calcula abajo
+    y: -size,
+    rot: (Math.random() - .5) * Math.PI,
     rotSpeed: (Math.random() - .5) * .08,
-    spinPhase: Math.random() * Math.PI * 2,    
-    spinSpeed: 0.003 + Math.random() * 0.004   
+    spinPhase: Math.random() * Math.PI * 2,
+    spinSpeed: 0.003 + Math.random() * 0.004
   };
 
   // SEGURIDAD: Evitar que el nuevo item aparezca encima de otro
@@ -1299,9 +1299,9 @@ function spawnIngredient() {
 // ─── COLISIÓN ────────────────────────────────────────────────────────────────
 function checkCatch() {
   // Ajustamos la zona de colisión para que coincida exactamente con la canasta en la base (suelo)
-  const barY  = canvas.height - 60; 
+  const barY = canvas.height - 60;
   const barY2 = canvas.height - 10;
-  const half  = CONFIG.fontSize * 0.55;
+  const half = CONFIG.fontSize * 0.55;
 
   for (let i = state.items.length - 1; i >= 0; i--) {
     const item = state.items[i];
@@ -1338,12 +1338,12 @@ function onCatch(item) {
       updateHUD();
       updateMenuCoins();
     } else if (item.type === 'magnet') {
-      let duration = 6000 + (PlayerData.data.magnetLevel * 2000); 
+      let duration = 6000 + (PlayerData.data.magnetLevel * 2000);
       if (PlayerData.data.activeSkin === 'cowboy') {
         duration += 2000;
         showEffectText('+2s IMÁN 🤠', item.x, item.y);
       }
-      state.magnetTime = Date.now() + duration; 
+      state.magnetTime = Date.now() + duration;
       SoundSystem.playSuccess();
       spawnCatchParticle(item, true);
     }
@@ -1379,20 +1379,20 @@ function onCatch(item) {
 function completeOrder() {
   SoundSystem.playSuccess();
   state.completedOrders += 1;
-  
+
   let basePoints = 50 + (state.level * 10);
   let bonus = 0;
-  
+
   if (state.gameMode === 'story') {
     if (PlayerData.data.storyLevel >= (PlayerData.data.maxStoryLevel || 1)) {
       PlayerData.data.coins += 50; // Gran premio la primera vez
       PlayerData.data.maxStoryLevel = PlayerData.data.storyLevel + 1;
-      showEffectText('¡NUEVA MISIÓN CUMPLIDA! +50🪙', canvas.width/2, canvas.height/2 - 150);
+      showEffectText('¡NUEVA MISIÓN CUMPLIDA! +50🪙', canvas.width / 2, canvas.height / 2 - 150);
     } else {
       PlayerData.data.coins += 5; // Premio pequeño si se repite
-      showEffectText('¡MISIÓN CUMPLIDA! +5🪙', canvas.width/2, canvas.height/2 - 150);
+      showEffectText('¡MISIÓN CUMPLIDA! +5🪙', canvas.width / 2, canvas.height / 2 - 150);
     }
-    
+
     PlayerData.data.storyLevel++;
     PlayerData.save();
     basePoints = 200;
@@ -1400,13 +1400,13 @@ function completeOrder() {
 
   if (PlayerData.data.activeSkin === 'xmas') {
     bonus = Math.floor(basePoints * 0.2);
-    showEffectText('BONUS +20% 🎄', canvas.width/2, canvas.height/2 - 100);
+    showEffectText('BONUS +20% 🎄', canvas.width / 2, canvas.height / 2 - 100);
   }
   state.score += basePoints + bonus;
 
   // HABILIDAD SAN VALENTÍN: Regalar monedas extra
   if (PlayerData.data.activeSkin === 'valentine') {
-    for(let i=0; i<3; i++) {
+    for (let i = 0; i < 3; i++) {
       setTimeout(() => spawnValentineTip(), i * 200);
     }
   }
@@ -1414,52 +1414,52 @@ function completeOrder() {
   // HABILIDAD PRIMAVERA: Chance de recuperar vida
   if (PlayerData.data.activeSkin === 'spring' && state.lives < 3 && Math.random() < 0.25) {
     state.lives++;
-    showEffectText('¡VIDA +1! 🌸', canvas.width/2, canvas.height/2);
+    showEffectText('¡VIDA +1! 🌸', canvas.width / 2, canvas.height / 2);
     updateHUD();
-    SoundSystem.playLevelUp(); 
+    SoundSystem.playLevelUp();
   }
-  
+
   if (state.gameMode === 'time') {
     state.gameTimer += 5;
-    showEffectText('+5 seg ⏱️', canvas.width/2, canvas.height/2 - 150);
+    showEffectText('+5 seg ⏱️', canvas.width / 2, canvas.height / 2 - 150);
   }
 
   // ¡Ratica feliz salta durante 1.5 segundos!
   state.happyAnimTime = Date.now() + 1500;
-  
+
   // Animación de éxito en ingredientes
   const area = document.getElementById('customer-area');
   area.style.animation = 'none';
-  area.offsetHeight; 
+  area.offsetHeight;
   area.style.animation = 'chipIn 0.5s ease';
-  
+
   // Animar salida del cliente
   const charEl = document.getElementById('customer-character');
   const bubble = document.getElementById('speech-bubble');
-  
+
   bubble.classList.remove('show');
   charEl.classList.remove('waiting');
   charEl.style.transform = 'translateX(250px)'; // Se va caminando
-  
+
   if (state.completedOrders % CONFIG.levelUpEvery === 0) {
     state.level = Math.min(CONFIG.maxLevel, state.level + 1);
     state.speed = CONFIG.baseSpeed + (state.level - 1) * CONFIG.speedIncrement;
     rotateBg(); // Cambiar el fondo al subir de nivel
     showLevelUp();
   }
-  
+
   updateHUD();
-  
+
   // Limpiar ingredientes que sobran en pantalla (pero dejar trampas y monedas)
   state.items = state.items.filter(item => item.isBad || item.isPowerup);
-  
+
   // Detener temporalmente la caída para que no caigan cosas "en el aire"
   if (state.fallTimer) clearTimeout(state.fallTimer);
 
   setTimeout(() => {
     generateOrder();
     scheduleNextFall(); // Reanudar caídas con el nuevo pedido
-  }, 600); 
+  }, 600);
 
   // ¡Dejar propina!
   spawnTip();
@@ -1471,23 +1471,23 @@ function spawnTip() {
 
   // Los clientes dejan entre 1 y 3 monedas de propina
   const count = 1 + Math.floor(Math.random() * 3);
-  
+
   for (let i = 0; i < count; i++) {
     const coin = document.createElement('div');
     coin.className = 'tip-coin';
     coin.textContent = '🪙';
     // Posición aleatoria leve sobre el mostrador
     coin.style.marginLeft = (Math.random() * 40 - 20) + 'px';
-    
+
     coin.onclick = () => {
       if (coin.classList.contains('collecting')) return;
       coin.classList.add('collecting');
-      
+
       SoundSystem.playPop();
       PlayerData.data.coins += 1;
       PlayerData.save();
       updateHUD();
-      
+
       setTimeout(() => coin.remove(), 500);
     };
 
@@ -1559,10 +1559,10 @@ function onMiss(emoji) {
 function triggerTrapHorde() {
   if (state.trapHordeActive) return;
   state.trapHordeActive = true;
-  
+
   // Mostrar alerta visual
   showHordeWarning();
-  
+
   // Sonido de alerta
   SoundSystem.playTone(200, 'sawtooth', 0.5, 0.2);
   setTimeout(() => SoundSystem.playTone(200, 'sawtooth', 0.5, 0.2), 300);
@@ -1608,45 +1608,45 @@ function showHordeWarning() {
 // ─── EFECTOS VISUALES ─────────────────────────────────────────────────────────
 function spawnCatchParticle(item, isGood) {
   const container = document.querySelector('.canvas-container');
-  const rect      = canvas.getBoundingClientRect();
-  const px        = (item.x / canvas.width)  * rect.width;
-  const py        = ((canvas.height - 40) / canvas.height) * rect.height;
+  const rect = canvas.getBoundingClientRect();
+  const px = (item.x / canvas.width) * rect.width;
+  const py = ((canvas.height - 40) / canvas.height) * rect.height;
 
   if (isGood) {
     // Explosión de confeti GIGANTE 3D (Efecto Ultra Juicy)
     const colors = ['#ff0055', '#00ffcc', '#ffff00', '#ff00ff', '#00ff00', '#ffffff', '#ff9900', '#ff3300', '#33ccff'];
-    const particleCount = 25; 
-    
+    const particleCount = 25;
+
     for (let i = 0; i < particleCount; i++) {
       const p = document.createElement('div');
       p.className = 'catch-particle';
       p.style.left = px + 'px';
       p.style.top = py + 'px';
-      
+
       // TAMAÑOS GIGANTES
       const size = 15 + Math.random() * 20;
       p.style.width = size + 'px';
       p.style.height = (size * (0.3 + Math.random() * 0.8)) + 'px';
-      
+
       // FORMAS VARIADAS
       const shapeType = Math.floor(Math.random() * 3);
       if (shapeType === 0) p.style.borderRadius = '2px'; // Rectángulo
       else if (shapeType === 1) p.style.borderRadius = '50%'; // Círculo
       else p.style.clipPath = 'polygon(50% 0%, 0% 100%, 100% 100%)'; // Triángulo
-      
+
       p.style.background = colors[Math.floor(Math.random() * colors.length)];
       p.style.zIndex = '150';
       p.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
-      
+
       const angle = (Math.random() * Math.PI * 2);
-      const dist = 80 + Math.random() * 150; 
+      const dist = 80 + Math.random() * 150;
       const tx = Math.cos(angle) * dist;
-      const ty = Math.sin(angle) * dist - 120; 
-      
+      const ty = Math.sin(angle) * dist - 120;
+
       const duration = 1.0 + Math.random() * 0.8;
       p.style.transition = `all ${duration}s cubic-bezier(0.19, 1, 0.22, 1)`;
       container.appendChild(p);
-      
+
       // Animación 3D para que no se vea plano
       requestAnimationFrame(() => {
         const rotX = Math.random() * 1080;
@@ -1655,7 +1655,7 @@ function spawnCatchParticle(item, isGood) {
         p.style.transform = `translate(${tx}px, ${ty}px) rotateX(${rotX}deg) rotateY(${rotY}deg) rotateZ(${rotZ}deg) scale(0.3)`;
         p.style.opacity = '0';
       });
-      
+
       setTimeout(() => p.remove(), duration * 1000);
     }
     return;
@@ -1665,7 +1665,7 @@ function spawnCatchParticle(item, isGood) {
   el.className = 'catch-particle';
   el.textContent = '❌';
   el.style.left = px + 'px';
-  el.style.top  = py + 'px';
+  el.style.top = py + 'px';
   el.style.fontSize = '1.8rem';
   container.appendChild(el);
   setTimeout(() => el.remove(), 800);
@@ -1673,22 +1673,22 @@ function spawnCatchParticle(item, isGood) {
 
 function spawnHazardParticle(item) {
   const container = document.querySelector('.canvas-container');
-  const rect      = canvas.getBoundingClientRect();
-  const px        = (item.x / canvas.width)  * rect.width;
-  const py        = ((canvas.height - 40) / canvas.height) * rect.height;
+  const rect = canvas.getBoundingClientRect();
+  const px = (item.x / canvas.width) * rect.width;
+  const py = ((canvas.height - 40) / canvas.height) * rect.height;
 
   const el = document.createElement('div');
   el.className = 'catch-particle hazard-particle';
   el.textContent = item.emoji;
   el.style.left = px + 'px';
-  el.style.top  = py + 'px';
+  el.style.top = py + 'px';
   container.appendChild(el);
 
   const warn = document.createElement('div');
   warn.className = 'hazard-warn';
   warn.textContent = '¡CUIDADO!';
   warn.style.left = (px - 40) + 'px';
-  warn.style.top  = (py - 30) + 'px';
+  warn.style.top = (py - 30) + 'px';
   container.appendChild(warn);
 
   setTimeout(() => { el.remove(); warn.remove(); }, 900);
@@ -1697,9 +1697,9 @@ function spawnHazardParticle(item) {
 function showEffectText(text, x, y) {
   const container = document.querySelector('.canvas-container');
   if (!container) return;
-  const rect      = canvas.getBoundingClientRect();
-  const px        = (x / canvas.width)  * rect.width;
-  const py        = (y / canvas.height) * rect.height;
+  const rect = canvas.getBoundingClientRect();
+  const px = (x / canvas.width) * rect.width;
+  const py = (y / canvas.height) * rect.height;
 
   const el = document.createElement('div');
   el.style.cssText = `
@@ -1719,7 +1719,7 @@ function showEffectText(text, x, y) {
   `;
   el.textContent = text;
   container.appendChild(el);
-  
+
   if (!document.getElementById('float-up-fade-kf')) {
     const s = document.createElement('style');
     s.id = 'float-up-fade-kf';
@@ -1754,7 +1754,7 @@ function spawnValentineTip() {
     filter: drop-shadow(0 0 10px #ff4d6d);
   `;
   heart.textContent = '💝';
-  
+
   if (!document.getElementById('pop-heart-kf')) {
     const s = document.createElement('style');
     s.id = 'pop-heart-kf';
@@ -1772,12 +1772,12 @@ function spawnValentineTip() {
     PlayerData.data.coins += 2;
     PlayerData.save();
     updateMenuCoins();
-    showEffectText('+2 🪙 ❤️', rx / (rect.width/canvas.width), ry / (rect.height/canvas.height));
+    showEffectText('+2 🪙 ❤️', rx / (rect.width / canvas.width), ry / (rect.height / canvas.height));
     heart.remove();
   };
 
   container.appendChild(heart);
-  setTimeout(() => { if(heart.parentElement) heart.click(); }, 3000);
+  setTimeout(() => { if (heart.parentElement) heart.click(); }, 3000);
 }
 
 function showMissFlash() {
@@ -1803,7 +1803,7 @@ function showHazardFlash() {
 function shakeScreen() {
   const wrapper = document.querySelector('.canvas-container');
   wrapper.style.animation = 'none';
-  wrapper.offsetHeight; 
+  wrapper.offsetHeight;
   wrapper.style.animation = 'screenShake 0.4s ease';
   setTimeout(() => { wrapper.style.animation = ''; }, 450);
 }
@@ -1848,7 +1848,7 @@ function renderSingleTheme(index) {
   if (theme.draw) {
     drawThemedBg(theme.draw);
   }
-  
+
   // 3. Overlay
   ctx.fillStyle = theme.overlay;
   ctx.fillRect(0, 0, w, h);
@@ -1859,7 +1859,7 @@ function rotateBg() {
   state.lastBgIndex = ASSETS.currentBgIndex;
   ASSETS.currentBgIndex = (ASSETS.currentBgIndex + 1) % BG_THEMES.length;
   state.bgTransition = 0; // Iniciar transición
-  
+
   // REINICIAR CRONÓMETRO: Si el fondo cambia (por pedido o tiempo),
   // reseteamos el tiempo para que el próximo cambio sea en 45 segundos.
   state.nextBgChangeTime = Date.now() + 45000;
@@ -1925,21 +1925,21 @@ function drawThemedBg(type) {
     ctx.strokeStyle = 'rgba(255,255,255,0.3)';
     ctx.lineWidth = 2;
     ctx.setLineDash([10, 10]);
-    ctx.beginPath(); ctx.moveTo(w/2, h*0.65); ctx.lineTo(w/2, h); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(w / 2, h * 0.65); ctx.lineTo(w / 2, h); ctx.stroke();
     ctx.setLineDash([]);
 
     // Focos del estadio
     ctx.save();
-    const spotlights = [[0.1*w, 0.05*h], [0.9*w, 0.05*h], [0.5*w, 0.02*h]];
+    const spotlights = [[0.1 * w, 0.05 * h], [0.9 * w, 0.05 * h], [0.5 * w, 0.02 * h]];
     spotlights.forEach(([sx, sy]) => {
-      const glowGrad = ctx.createRadialGradient(sx, sy, 0, sx, sy, h*0.5);
+      const glowGrad = ctx.createRadialGradient(sx, sy, 0, sx, sy, h * 0.5);
       glowGrad.addColorStop(0, 'rgba(255,240,180,0.15)');
       glowGrad.addColorStop(1, 'rgba(255,240,180,0)');
       ctx.fillStyle = glowGrad;
       ctx.fillRect(0, 0, w, h);
       // Punto de foco
       ctx.beginPath();
-      ctx.arc(sx, sy, 8, 0, Math.PI*2);
+      ctx.arc(sx, sy, 8, 0, Math.PI * 2);
       ctx.fillStyle = 'rgba(255,240,200,0.9)';
       ctx.fill();
     });
@@ -1949,9 +1949,9 @@ function drawThemedBg(type) {
     ctx.font = '32px serif';
     ctx.globalAlpha = 0.15;
     const t = Date.now() * 0.0005;
-    ctx.fillText('⚽', w*0.15 + Math.sin(t)*10, h*0.2 + Math.cos(t*0.7)*8);
-    ctx.fillText('⚽', w*0.8 + Math.sin(t+1)*12, h*0.35 + Math.cos(t*0.5)*10);
-    ctx.fillText('🏆', w*0.5 + Math.sin(t+2)*8, h*0.15 + Math.cos(t*0.8)*6);
+    ctx.fillText('⚽', w * 0.15 + Math.sin(t) * 10, h * 0.2 + Math.cos(t * 0.7) * 8);
+    ctx.fillText('⚽', w * 0.8 + Math.sin(t + 1) * 12, h * 0.35 + Math.cos(t * 0.5) * 10);
+    ctx.fillText('🏆', w * 0.5 + Math.sin(t + 2) * 8, h * 0.15 + Math.cos(t * 0.8) * 6);
     ctx.globalAlpha = 1;
 
   } else if (type === 'xmas') {
@@ -1979,7 +1979,7 @@ function drawThemedBg(type) {
     ctx.restore();
 
     // Luces navideñas en la parte superior
-    const colors = ['#ff0000','#00aa00','#ffff00','#0000ff','#ff6600'];
+    const colors = ['#ff0000', '#00aa00', '#ffff00', '#0000ff', '#ff6600'];
     for (let i = 0; i < Math.floor(w / 35); i++) {
       const bx = i * 35 + 10;
       const by = 20 + Math.sin(i * 1.2) * 12;
@@ -1997,7 +1997,7 @@ function drawThemedBg(type) {
         ctx.lineWidth = 1.5;
         ctx.beginPath();
         ctx.moveTo(bx + 7, by);
-        ctx.lineTo(bx + 42, 20 + Math.sin((i+1)*1.2)*12);
+        ctx.lineTo(bx + 42, 20 + Math.sin((i + 1) * 1.2) * 12);
         ctx.stroke();
       }
     }
@@ -2123,13 +2123,13 @@ function showLevelUp() {
 
 // ─── PANTALLA VICTORIA HISTORIA ──────────────────────────────────────────────
 function showVictoryScreen() {
-  if (!state.running) return; 
+  if (!state.running) return;
   state.running = false;
-  
+
   if (state.timerInterval) clearInterval(state.timerInterval);
   cancelAnimationFrame(state.animFrame);
   clearTimeout(state.fallTimer);
-  
+
   SoundSystem.playLevelUp();
   setTimeout(() => SoundSystem.playSuccess(), 500);
 
@@ -2185,7 +2185,7 @@ function showVictoryScreen() {
 function endGame(cause = null) {
   if (!state.running) return; // Evitar llamadas dobles
   state.running = false;
-  
+
   if (state.timerInterval) clearInterval(state.timerInterval);
   const timerHud = document.getElementById('timer-hud');
   if (timerHud) timerHud.style.display = 'none';
@@ -2194,12 +2194,12 @@ function endGame(cause = null) {
   clearTimeout(state.fallTimer);
 
   const isNewRecord = PlayerData.saveBest(state.score);
-  const best        = PlayerData.getBest();
+  const best = PlayerData.getBest();
 
   document.getElementById('final-score').textContent = state.score;
   document.getElementById('final-level').textContent = state.level;
   document.getElementById('final-caught').textContent = state.caught;
-  document.getElementById('final-best').textContent  = best;
+  document.getElementById('final-best').textContent = best;
 
   const recipe = document.getElementById('final-recipe');
   recipe.textContent = `Pedidos completados: ${state.completedOrders}`;
@@ -2214,7 +2214,7 @@ function endGame(cause = null) {
   // Visual Cause Feedback
   const causeEmoji = document.querySelector('.gameover-emoji');
   const causeSub = document.querySelector('.gameover-sub');
-  
+
   if (cause) {
     if (cause.type === 'hazard') {
       causeEmoji.textContent = cause.emoji || '💥';
@@ -2253,14 +2253,14 @@ function reviveWithAd() {
 
   AdSystem.showRewarded(
     () => {
-      state.lives   = 1;
+      state.lives = 1;
       state.running = true;
-      state.items   = [];
+      state.items = [];
 
       const hearts = document.querySelectorAll('#hud-lives .heart');
       hearts.forEach((h, i) => {
         h.classList.toggle('active', i < 1);
-        h.classList.toggle('lost',   i >= 1);
+        h.classList.toggle('lost', i >= 1);
         h.style.transform = '';
         h.style.opacity = '';
         h.classList.remove('shake');
@@ -2289,7 +2289,7 @@ function updateHUD() {
   const scoreEl = document.getElementById('hud-score');
   const levelEl = document.getElementById('hud-level');
   const coinsEl = document.getElementById('hud-coins');
-  const bestEl  = document.getElementById('hud-best');
+  const bestEl = document.getElementById('hud-best');
 
   // Si el puntaje cambió, animamos rebote
   if (scoreEl.textContent !== String(state.score)) {
@@ -2349,13 +2349,13 @@ function updateMenuCoins() {
   if (hm) hm.textContent = c;
   if (up) up.textContent = c;
   if (sk) sk.textContent = c;
-  
+
   const mCost = getMagnetCost();
   const cEl = document.getElementById('upg-magnet-cost');
   const labelEl = document.getElementById('upg-magnet-cost-label');
   const vEl = document.getElementById('upg-magnet-val');
   const btnMag = document.getElementById('btn-buy-magnet');
-  
+
   if (mCost === 'MAX') {
     if (labelEl) labelEl.innerHTML = '¡AL MÁXIMO!';
     if (btnMag) {
@@ -2372,7 +2372,7 @@ function updateMenuCoins() {
       btnMag.style.cursor = 'pointer';
     }
   }
-  
+
   if (vEl) vEl.textContent = 6 + (PlayerData.data.magnetLevel * 2);
 
   // Actualizar barrita visual
@@ -2393,7 +2393,7 @@ function updateMenuCoins() {
 function updateComboPreview(tempSkinId = null, tempBasketId = null) {
   const activeSkinId = tempSkinId || PlayerData.data.activeSkin;
   const activeBasketId = tempBasketId || PlayerData.data.activeBasket;
-  
+
   const skin = SKINS.find(s => s.id === activeSkinId) || SKINS[0];
   const basket = BASKETS.find(b => b.id === activeBasketId) || BASKETS[0];
   const basketImg = ASSETS.baskets[activeBasketId];
@@ -2425,7 +2425,7 @@ function updateComboPreview(tempSkinId = null, tempBasketId = null) {
     bkSkinImg.style.filter = 'drop-shadow(0 10px 15px rgba(0,0,0,0.5))';
   }
   if (bkImg && basketImg) bkImg.src = basketImg.src;
-  
+
   if (bkName) bkName.textContent = tempBasketId ? basket.name : `Canasta ${basket.name}`;
   if (bkDesc) bkDesc.textContent = basket.desc || (basket.decor ? `Efecto: ${basket.decor}` : 'Diseño personalizado');
 
@@ -2441,9 +2441,9 @@ function spawnPreviewParticles(containerId) {
   for (let i = 0; i < 12; i++) {
     const p = document.createElement('div');
     const size = 3 + Math.random() * 5;
-    const x = 30 + Math.random() * 40; 
+    const x = 30 + Math.random() * 40;
     const delay = Math.random() * 2;
-    
+
     p.style.cssText = `
       position: absolute;
       left: ${x}%;
@@ -2471,7 +2471,7 @@ function spawnPreviewParticles() {
     const size = 3 + Math.random() * 5;
     const x = 40 + Math.random() * 20; // Centrado relativo
     const delay = Math.random() * 2;
-    
+
     p.style.cssText = `
       position: absolute;
       left: ${x}%;
@@ -2639,7 +2639,7 @@ function updateBasketsUI() {
 canvas.addEventListener('mousemove', e => {
   if (!state.running || state.paused) return;
   const rect = canvas.getBoundingClientRect();
-  const mx   = (e.clientX - rect.left) * (canvas.width / rect.width);
+  const mx = (e.clientX - rect.left) * (canvas.width / rect.width);
   state.barX = Math.max(0, Math.min(canvas.width - state.barW, mx - state.barW / 2));
 
   // Detección de velocidad para mareo en juego
@@ -2654,7 +2654,7 @@ canvas.addEventListener('touchmove', e => {
   e.preventDefault();
   if (!state.running || state.paused) return;
   const rect = canvas.getBoundingClientRect();
-  const tx   = (e.touches[0].clientX - rect.left) * (canvas.width / rect.width);
+  const tx = (e.touches[0].clientX - rect.left) * (canvas.width / rect.width);
   state.barX = Math.max(0, Math.min(canvas.width - state.barW, tx - state.barW / 2));
 }, { passive: false });
 
@@ -2705,7 +2705,7 @@ document.getElementById('btn-pause-menu').addEventListener('click', () => {
 document.getElementById('btn-revive').addEventListener('click', reviveWithAd);
 
 const btnSaveGlobal = document.getElementById('btn-save-global');
-if(btnSaveGlobal) {
+if (btnSaveGlobal) {
   btnSaveGlobal.addEventListener('click', () => {
     const input = document.getElementById('player-name-input');
     const name = input.value.trim() || "Anónimo";
@@ -2724,7 +2724,7 @@ function updateMuteIcons(isMuted) {
   const btnMenu = document.getElementById('mute-icon-menu');
   if (btnGame) btnGame.textContent = icon;
   if (btnMenu) btnMenu.textContent = icon;
-  
+
   if (isMuted) {
     SoundSystem.stopMenuMusic();
   } else if (!state.running || state.paused) {
@@ -2747,7 +2747,7 @@ if (btnMuteMenu) {
 
 // Botones de Habilidades
 const btnUpg = document.getElementById('btn-upgrades');
-if(btnUpg) {
+if (btnUpg) {
   btnUpg.addEventListener('click', () => {
     updateMenuCoins();
     showScreen('screen-upgrades');
@@ -2755,7 +2755,7 @@ if(btnUpg) {
 }
 
 const btnBack = document.getElementById('btn-back-menu');
-if(btnBack) {
+if (btnBack) {
   btnBack.addEventListener('click', () => {
     showScreen('screen-start');
     SoundSystem.startMenuMusic();
@@ -2763,7 +2763,7 @@ if(btnBack) {
 }
 
 const btnOpenSkins = document.getElementById('btn-open-skins');
-if(btnOpenSkins) {
+if (btnOpenSkins) {
   btnOpenSkins.addEventListener('click', () => {
     updateMenuCoins();
     showScreen('screen-skins');
@@ -2771,7 +2771,7 @@ if(btnOpenSkins) {
 }
 
 const btnBackSkins = document.getElementById('btn-back-skins');
-if(btnBackSkins) {
+if (btnBackSkins) {
   btnBackSkins.addEventListener('click', () => {
     showScreen('screen-start');
     SoundSystem.startMenuMusic();
@@ -2779,7 +2779,7 @@ if(btnBackSkins) {
 }
 
 const btnOpenBaskets = document.getElementById('btn-open-baskets');
-if(btnOpenBaskets) {
+if (btnOpenBaskets) {
   btnOpenBaskets.addEventListener('click', () => {
     updateMenuCoins();
     updateBasketsUI();
@@ -2788,7 +2788,7 @@ if(btnOpenBaskets) {
 }
 
 const btnBackBaskets = document.getElementById('btn-back-baskets');
-if(btnBackBaskets) {
+if (btnBackBaskets) {
   btnBackBaskets.addEventListener('click', () => {
     showScreen('screen-start');
     SoundSystem.startMenuMusic();
@@ -2796,14 +2796,14 @@ if(btnBackBaskets) {
 }
 
 const btnOpenGuide = document.getElementById('btn-open-guide');
-if(btnOpenGuide) {
+if (btnOpenGuide) {
   btnOpenGuide.addEventListener('click', () => {
     showScreen('screen-guide');
   });
 }
 
 const btnBackGuide = document.getElementById('btn-back-guide');
-if(btnBackGuide) {
+if (btnBackGuide) {
   btnBackGuide.addEventListener('click', () => {
     showScreen('screen-start');
     SoundSystem.startMenuMusic();
@@ -2811,7 +2811,7 @@ if(btnBackGuide) {
 }
 
 const btnRefreshLB = document.getElementById('btn-refresh-leaderboard');
-if(btnRefreshLB) {
+if (btnRefreshLB) {
   btnRefreshLB.addEventListener('click', () => {
     fetchGlobalLeaderboard();
     SoundSystem.playPop();
@@ -2820,7 +2820,7 @@ if(btnRefreshLB) {
 
 
 const btnBuyMag = document.getElementById('btn-buy-magnet');
-if(btnBuyMag) {
+if (btnBuyMag) {
   btnBuyMag.addEventListener('click', () => {
     const cost = getMagnetCost();
     if (cost === 'MAX') return;
@@ -2858,9 +2858,9 @@ const freeCoinsHandler = () => {
   );
 };
 
-if(btnFreeCoinsUpg) btnFreeCoinsUpg.addEventListener('click', freeCoinsHandler);
-if(btnFreeCoinsSk) btnFreeCoinsSk.addEventListener('click', freeCoinsHandler);
-if(btnFreeCoinsBk) btnFreeCoinsBk.addEventListener('click', freeCoinsHandler);
+if (btnFreeCoinsUpg) btnFreeCoinsUpg.addEventListener('click', freeCoinsHandler);
+if (btnFreeCoinsSk) btnFreeCoinsSk.addEventListener('click', freeCoinsHandler);
+if (btnFreeCoinsBk) btnFreeCoinsBk.addEventListener('click', freeCoinsHandler);
 
 setInterval(() => {
   if (state.running && !state.paused) checkCatch();
@@ -2881,10 +2881,10 @@ function initFloatingFood() {
     document.getElementById('floating-food-baskets'),
     document.getElementById('floating-food-gameover')
   ];
-  
+
   const allGood = INGREDIENTS.map(i => i.emoji);
-  const allBad  = HAZARDS.map(i => i.emoji);
-  const all     = [...allGood, ...allGood, ...allBad]; 
+  const allBad = HAZARDS.map(i => i.emoji);
+  const all = [...allGood, ...allGood, ...allBad];
 
   containers.forEach(container => {
     if (!container) return;
@@ -2892,9 +2892,9 @@ function initFloatingFood() {
     // Un poco más de densidad para que se vea premium
     for (let n = 0; n < 30; n++) {
       const emoji = all[Math.floor(Math.random() * all.length)];
-      const el    = document.createElement('div');
+      const el = document.createElement('div');
       el.className = 'float-item';
-      
+
       // Aplicar sprite si existe
       const info = SPRITE_MAP[emoji];
       if (emoji === '🫓') {
@@ -2923,16 +2923,16 @@ function initFloatingFood() {
         el.classList.add('is-emoji');
         el.textContent = emoji;
       }
-      
-      el.style.left  = Math.random() * 100 + 'vw';
+
+      el.style.left = Math.random() * 100 + 'vw';
       // Variar velocidad y retraso para que no caigan todos juntos
       el.style.animationDuration = (10 + Math.random() * 15) + 's';
-      el.style.animationDelay    = (-Math.random() * 25) + 's';
-      
+      el.style.animationDelay = (-Math.random() * 25) + 's';
+
       // Tamaño aleatorio sutil
       const scale = 0.8 + Math.random() * 0.7;
       el.style.transform = `scale(${scale})`;
-      
+
       container.appendChild(el);
     }
   });
@@ -2949,7 +2949,7 @@ function initAssets() {
     }
 
     let basketSVG = '';
-    
+
     if (b.id === 'xmas') {
       // DISEÑO TOTALMENTE NUEVO: CAJA DE REGALO NAVIDEÑA
       basketSVG = `
@@ -3312,12 +3312,12 @@ function initAssets() {
     const bImg = new Image();
     try {
       bImg.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(basketSVG)));
-    } catch(e) {
+    } catch (e) {
       bImg.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(basketSVG);
     }
     ASSETS.baskets[b.id] = bImg;
   });
-  
+
   const magnetSVG = `
     <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
       <defs>
@@ -3382,9 +3382,9 @@ window.addEventListener('load', () => {
 function fetchGlobalLeaderboard() {
   const container = document.getElementById('leaderboard-body');
   if (!container) return;
-  
+
   if (!GLOBAL_CONFIG.isLoaded) {
-    container.innerHTML = '<p style="font-size:0.75rem; opacity:0.6; color:#fff; text-align:center;">⌛ Cargando tabla mundial...</p>';
+    container.innerHTML = '<p style="font-size:0.75rem; opacity:0.6; color:#fff; text-align:center;">⌛ Conectando con la cocina mundial...</p>';
   }
 
   const old = document.getElementById('dreamlo-script');
@@ -3392,42 +3392,44 @@ function fetchGlobalLeaderboard() {
 
   const script = document.createElement('script');
   script.id = 'dreamlo-script';
-  // Formato nativo de Dreamlo para JSONP (más compatible)
-  script.src = `https://dreamlo.com/lb/${GLOBAL_CONFIG.DREAMLO_PUBLIC}/json-p/handleDreamloData`;
-  
+  // Formato con query string para forzar JSONP si el path falla
+  script.src = `https://www.dreamlo.com/lb/${GLOBAL_CONFIG.DREAMLO_PUBLIC}/json?callback=handleDreamloData&_=${Date.now()}`;
+
   script.onerror = () => {
+    console.warn("Dreamlo bloqueado o error de red");
     if (!GLOBAL_CONFIG.isLoaded) {
-      container.innerHTML = '<p style="color:#ff6b6b; font-size:0.7rem; text-align:center;">⚠️ Error al conectar con el servidor.</p>';
+      container.innerHTML = '<p style="color:#ff9f43; font-size:0.7rem; text-align:center;">⚠️ Modo local activado (Servidor desconectado).</p>';
     }
   };
 
   document.body.appendChild(script);
 
-  // Tiempo de espera de 10 segundos
+  // Tiempo de espera de 12 segundos (más generoso)
   setTimeout(() => {
     if (!GLOBAL_CONFIG.isLoaded && container) {
-       container.innerHTML = '<p style="color:#ff9f43; font-size:0.7rem; text-align:center;">⚠️ La tabla tarda demasiado en responder.</p>';
+      container.innerHTML = '<p style="color:#ffd700; font-size:0.7rem; text-align:center;">🏆 ¡Sé el primero en marcar un récord mundial!</p>';
     }
-  }, 10000);
+  }, 12000);
 }
 
-// Esta función es llamada automáticamente por el servidor de Dreamlo
-window.handleDreamloData = function(data) {
+window.handleDreamloData = function (data) {
   GLOBAL_CONFIG.isLoaded = true;
-  if (data && data.dreamlo && data.dreamlo.leaderboard) {
-    let entries = data.dreamlo.leaderboard.entry;
-    
-    if (!entries) {
-      GLOBAL_CONFIG.leaderboard = [];
-    } else {
+  let entries = [];
+
+  try {
+    if (data && data.dreamlo && data.dreamlo.leaderboard && data.dreamlo.leaderboard.entry) {
+      entries = data.dreamlo.leaderboard.entry;
       if (!Array.isArray(entries)) entries = [entries];
-      
-      GLOBAL_CONFIG.leaderboard = entries.map(s => ({
-        name: s.name,
-        score: parseInt(s.score) || 0
-      })).sort((a, b) => b.score - a.score).slice(0, 10);
     }
+  } catch (e) {
+    console.error("Error procesando datos de Dreamlo:", e);
   }
+
+  GLOBAL_CONFIG.leaderboard = entries.map(s => ({
+    name: s.name || "Chef",
+    score: parseInt(s.score) || 0
+  })).sort((a, b) => b.score - a.score).slice(0, 10);
+
   renderLeaderboard();
 };
 
@@ -3437,18 +3439,18 @@ window._activePings = [];
 function saveGlobalScore(name, score) {
   const cleanName = name.trim().replace(/[^a-zA-Z0-9]/g, "").substring(0, 12) || "Anonimo";
   const btn = document.getElementById('btn-save-global');
-  
+
   if (btn) {
     btn.disabled = true;
     btn.textContent = "Enviando... ⏳";
   }
 
   console.log("Enviando récord global...", cleanName, score);
-  
+
   // Usar un beacon de imagen persistente
   const ping = new Image();
   window._activePings.push(ping); // Evita GC
-  
+
   ping.onload = ping.onerror = () => {
     // Limpiar del almacén una vez terminada
     const idx = window._activePings.indexOf(ping);
@@ -3456,7 +3458,7 @@ function saveGlobalScore(name, score) {
   };
 
   ping.src = `https://dreamlo.com/lb/${GLOBAL_CONFIG.DREAMLO_PRIVATE}/add/${cleanName}/${score}`;
-  
+
   // Esperar 3 segundos para dar tiempo al servidor a procesar el registro
   setTimeout(() => {
     if (btn) btn.textContent = "¡Guardado! ✅";
@@ -3468,10 +3470,10 @@ function renderLeaderboard() {
   const container = document.getElementById('leaderboard-body');
   if (!container) return;
   container.innerHTML = '';
-  
+
   const medals = ['🥇', '🥈', '🥉', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'];
   const colors = ['#ffd700', '#c0c0c0', '#cd7f32', '#9b59b6', '#3498db', '#1abc9c', '#e67e22', '#e74c3c', '#95a5a6', '#7f8c8d'];
-  
+
   GLOBAL_CONFIG.leaderboard.forEach((entry, i) => {
     const row = document.createElement('div');
     row.style.cssText = `
@@ -3505,7 +3507,7 @@ let mouseDizzyData = {
 function triggerDizzy() {
   if (mouseDizzyData.isDizzy) return;
   mouseDizzyData.isDizzy = true;
-  
+
   const logoRat = document.querySelector('.logo-rat');
   const dizzyCheese = document.getElementById('dizzy-cheese');
   const gameLogo = document.querySelector('.game-logo');
@@ -3513,7 +3515,7 @@ function triggerDizzy() {
   if (logoRat) logoRat.classList.add('dizzy');
   if (dizzyCheese) dizzyCheese.classList.remove('hidden');
   if (gameLogo) gameLogo.style.transform = `rotateY(0deg) rotateX(0deg)`;
-  
+
   // Sonido de error suave para el mareo
   SoundSystem.playTone(200, 'sine', 0.5, 0.05);
 
@@ -3530,20 +3532,20 @@ function triggerDizzy() {
 document.addEventListener('mousemove', (e) => {
   const startScreen = document.getElementById('screen-start');
   const gameLogo = document.querySelector('.game-logo');
-  
+
   // Solo si la pantalla de inicio es visible
   if (startScreen && startScreen.classList.contains('active') && gameLogo) {
     const rect = gameLogo.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
-    
+
     // Si está mareado, no sigue al cursor
     if (mouseDizzyData.isDizzy) return;
 
     // Calcular inclinación (limitada para que no gire de más)
     const angleX = (e.clientX - centerX) / 25;
     const angleY = (e.clientY - centerY) / 25;
-    
+
     // Aplicamos la rotación 3D
     gameLogo.style.transform = `rotateY(${angleX}deg) rotateX(${-angleY}deg)`;
 
@@ -3553,7 +3555,7 @@ document.addEventListener('mousemove', (e) => {
     if (dt > 0 && dt < 100) { // Solo si son eventos cercanos
       const dx = Math.abs(e.clientX - mouseDizzyData.lastX);
       const v = dx / dt;
-      
+
       if (v > 5) { // Umbral un poco más bajo
         mouseDizzyData.velocitySum += v;
         if (mouseDizzyData.velocitySum > 100) {
