@@ -557,7 +557,7 @@ ASSETS.sprites.veggies.src = 'imgs/veggies.png';
 ASSETS.sprites.proteins.src = 'imgs/proteins.png';
 ASSETS.sprites.others.src = 'imgs/others.png';
 
-// Función para remover fondo blanco de las skins
+// Función para remover fondo blanco de las skins (más robusta para GitHub)
 function processWhiteBackground(img) {
   const oc = document.createElement('canvas');
   oc.width = img.naturalWidth;
@@ -565,33 +565,43 @@ function processWhiteBackground(img) {
   const octx = oc.getContext('2d');
   octx.drawImage(img, 0, 0);
 
-  const imgData = octx.getImageData(0, 0, oc.width, oc.height);
-  const d = imgData.data;
+  try {
+    const imgData = octx.getImageData(0, 0, oc.width, oc.height);
+    const d = imgData.data;
 
-  for (let i = 0; i < d.length; i += 4) {
-    const r = d[i], g = d[i + 1], b = d[i + 2];
-    if (r > 220 && g > 220 && b > 220) {
-      const whiteness = Math.min(r, g, b);
-      d[i + 3] = Math.max(0, 255 - Math.round((whiteness - 220) * (255 / 35)));
+    // Umbral de blancura más flexible (200 en lugar de 220)
+    for (let i = 0; i < d.length; i += 4) {
+      const r = d[i], g = d[i + 1], b = d[i + 2];
+      // Si es muy blanco, lo hacemos transparente
+      if (r > 200 && g > 200 && b > 200) {
+        const whiteness = Math.min(r, g, b);
+        // Desvanecimiento suave de los bordes
+        d[i + 3] = Math.max(0, 255 - Math.round((whiteness - 200) * (255 / 55)));
+      }
     }
+    octx.putImageData(imgData, 0, 0);
+  } catch (e) {
+    console.warn("No se pudo procesar la transparencia (CORS):", e);
+    return img; // Devolver imagen original si falla
   }
-  octx.putImageData(imgData, 0, 0);
   return oc;
 }
 
 // Cargar todas las skins dinámicamente
 SKINS.forEach(skin => {
   const img = new Image();
+  img.crossOrigin = 'anonymous'; // IMPORTANTE para GitHub Pages y getImageData
   img.onload = () => {
     ASSETS.skinCleanCanvas[skin.id] = processWhiteBackground(img);
   };
   img.onerror = () => {
+    console.error(`Error cargando skin: ${skin.id} desde ${skin.src}`);
     if (skin.id === 'none') {
-      console.warn("Usando fallback para Chef Normal.");
       img.src = 'imgs/remy_chef.png';
-    } else if (skin.id === 'spring') {
-      console.warn("Usando fallback para Primavera.");
-      img.src = 'imgs/remy_chef.png';
+    } else {
+      // Intentar cargar la versión local si la ruta de GitHub falla por alguna razón
+      const localPath = skin.src.startsWith('imgs/') ? skin.src : `imgs/${skin.src}`;
+      if (img.src !== localPath) img.src = localPath;
     }
   };
   img.src = skin.src;
@@ -979,8 +989,8 @@ function drawBar() {
 
   const skin = SKINS.find(s => s.id === PlayerData.data.activeSkin) || SKINS[0];
   const scl = skin.scale || 1.0;
-  const remyW = 160 * scl;
-  const remyH = 195 * scl;
+  let remyW = 160 * scl;
+  let remyH = 195 * scl;
   const skinId = skin.id;
 
   // Imán activo: Dibujar imán flotando sobre el ratón
@@ -1007,26 +1017,41 @@ function drawBar() {
     // Dibujar quesos mareados sobre la cabeza
     ctx.save();
     const centerX = bx + bw / 2;
-    const centerY = by - remyH - 20 + yAnim;
+    const currentRemyH = remyH || 195; // Asegurar que no sea 0
+    const centerY = by - currentRemyH - 10 + yAnim;
+    
+    ctx.font = '24px serif';
+    ctx.shadowColor = 'rgba(255, 215, 0, 0.5)';
+    ctx.shadowBlur = 10;
+    
     for (let i = 0; i < 3; i++) {
       const angle = (Date.now() * 0.005) + (i * Math.PI * 2 / 3);
-      const qx = centerX + Math.cos(angle) * 40;
+      const qx = centerX + Math.cos(angle) * 45;
       const qy = centerY + Math.sin(angle) * 15;
-      ctx.font = '24px serif';
+      
+      // Intentar dibujar el emoji, si falla se verá un círculo amarillo bonito
+      ctx.fillStyle = '#ffd700';
       ctx.fillText('🧀', qx, qy);
     }
     ctx.restore();
   }
 
-  if (cleanCanvas) {
-    // Usar el canvas procesado (fondo transparente)
-    ctx.drawImage(cleanCanvas, bx + bw / 2 - remyW / 2, by - remyH + 10 + yAnim, remyW, remyH);
-  } else if (rawImage && rawImage.complete && rawImage.naturalWidth > 0) {
-    ctx.drawImage(rawImage, bx + bw / 2 - remyW / 2, by - remyH + 10 + yAnim, remyW, remyH);
+  const activeImg = cleanCanvas || rawImage;
+
+  if (activeImg && (activeImg.naturalWidth || activeImg.width)) {
+    const imgW = activeImg.naturalWidth || activeImg.width;
+    const imgH = activeImg.naturalHeight || activeImg.height;
+    const aspect = imgW / imgH;
+    remyH = 195 * scl;
+    remyW = remyH * aspect;
+  }
+
+  if (activeImg) {
+    ctx.drawImage(activeImg, bx + bw / 2 - remyW / 2, by - remyH + 10 + yAnim, remyW, remyH);
   } else {
-    // Fallback
-    ctx.font = '45px serif';
-    ctx.fillText('🐭', bx + bw / 2, by - 75 + yAnim);
+    // Fallback texto si no hay imagen
+    ctx.font = '80px serif';
+    ctx.fillText('🐀', bx + bw / 2 - 40, by - 20);
   }
   ctx.restore();
 
@@ -2433,12 +2458,12 @@ function updateComboPreview(tempSkinId = null, tempBasketId = null) {
   spawnPreviewParticles('preview-particles-bk');
 }
 
-function spawnPreviewParticles(containerId) {
+function spawnPreviewParticles(containerId = 'preview-particles-skins') {
   const container = document.getElementById(containerId);
   if (!container) return;
   container.innerHTML = '';
 
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < 15; i++) {
     const p = document.createElement('div');
     const size = 3 + Math.random() * 5;
     const x = 30 + Math.random() * 40;
@@ -2456,34 +2481,7 @@ function spawnPreviewParticles(containerId) {
       box-shadow: 0 0 10px #ffd93d;
       animation: previewParticle 2s linear infinite;
       animation-delay: ${delay}s;
-    `;
-    container.appendChild(p);
-  }
-}
-
-function spawnPreviewParticles() {
-  const container = document.getElementById('preview-particles');
-  if (!container) return;
-  container.innerHTML = '';
-
-  for (let i = 0; i < 15; i++) {
-    const p = document.createElement('div');
-    const size = 3 + Math.random() * 5;
-    const x = 40 + Math.random() * 20; // Centrado relativo
-    const delay = Math.random() * 2;
-
-    p.style.cssText = `
-      position: absolute;
-      left: ${x}%;
-      bottom: 20%;
-      width: ${size}px;
-      height: ${size}px;
-      background: #ffd93d;
-      border-radius: 50%;
-      opacity: 0;
-      box-shadow: 0 0 10px #ffd93d;
-      animation: previewParticle 2s linear infinite;
-      animation-delay: ${delay}s;
+      pointer-events: none;
     `;
     container.appendChild(p);
   }
@@ -2495,11 +2493,7 @@ function spawnPreviewParticles() {
       @keyframes previewParticle {
         0% { transform: translateY(0) scale(1); opacity: 0; }
         20% { opacity: 0.8; }
-        100% { transform: translateY(-100px) scale(0); opacity: 0; }
-      }
-      @keyframes previewPop {
-        0% { transform: scale(0.5) translateY(20px); opacity: 0.5; }
-        100% { transform: scale(1) translateY(0); opacity: 1; }
+        100% { transform: translateY(-80px) scale(0); opacity: 0; }
       }
     `;
     document.head.appendChild(s);
