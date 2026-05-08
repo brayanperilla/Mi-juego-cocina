@@ -558,7 +558,6 @@ ASSETS.sprites.proteins.src = 'imgs/proteins.png';
 ASSETS.sprites.others.src = 'imgs/others.png';
 
 // Función para remover fondo blanco de las skins
-// Umbral alto (248) para NO borrar la ropa del personaje, solo el blanco puro
 function processWhiteBackground(img) {
   const oc = document.createElement('canvas');
   oc.width = img.naturalWidth;
@@ -570,22 +569,29 @@ function processWhiteBackground(img) {
     const imgData = octx.getImageData(0, 0, oc.width, oc.height);
     const d = imgData.data;
 
-    // Umbral MUY alto (248) para solo eliminar blancos casi puros del fondo
-    // Valores menores borrarían la ropa clara del personaje
+    // Detectar si la imagen ya tiene transparencia
+    let hasTransparency = false;
+    for (let i = 3; i < d.length; i += 4) {
+      if (d[i] < 250) {
+        hasTransparency = true;
+        break;
+      }
+    }
+
+    // SI YA TIENE TRANSPARENCIA, NO TOCARLA (evita borrar ropa blanca)
+    if (hasTransparency) return img;
+
+    // Si es totalmente opaca, procedemos a quitar el blanco del fondo
+    // Umbral extremo (250) para evitar tocar la ropa clara
     for (let i = 0; i < d.length; i += 4) {
       const r = d[i], g = d[i + 1], b = d[i + 2];
-      if (r > 248 && g > 248 && b > 248) {
-        d[i + 3] = 0; // Transparente
-      } else if (r > 240 && g > 240 && b > 240) {
-        // Borde suave: semitransparente
-        d[i + 3] = Math.round((255 - r) * 4);
+      if (r > 250 && g > 250 && b > 250) {
+        d[i + 3] = 0;
       }
     }
     octx.putImageData(imgData, 0, 0);
   } catch (e) {
-    // Si hay error CORS, devolver imagen original sin procesar
-    // La imagen se verá con fondo blanco pero al menos se verá
-    console.warn('Transparencia no procesada (CORS):', e);
+    console.warn('CORS bloqueó el procesamiento de transparencia:', e);
     return img;
   }
   return oc;
@@ -1021,11 +1027,9 @@ function drawBar() {
     ctx.rotate(wobble * Math.PI / 180);
     ctx.translate(-(bx + bw / 2), -(by - remyH / 2));
 
-    // Dibujar quesos mareados sobre la cabeza
+    // Dibujar quesos mareados sobre la cabeza (Coordenadas relativas al centro rotado)
     ctx.save();
-    const centerX = bx + bw / 2;
-    const currentRemyH = remyH || 195; // Asegurar que no sea 0
-    const centerY = by - currentRemyH - 10 + yAnim;
+    const dizzyY = - (remyH / 2) - 10;
     
     ctx.font = '24px serif';
     ctx.shadowColor = 'rgba(255, 215, 0, 0.5)';
@@ -1033,10 +1037,10 @@ function drawBar() {
     
     for (let i = 0; i < 3; i++) {
       const angle = (Date.now() * 0.005) + (i * Math.PI * 2 / 3);
-      const qx = centerX + Math.cos(angle) * 45;
-      const qy = centerY + Math.sin(angle) * 15;
+      const qx = Math.cos(angle) * 45;
+      const qy = dizzyY + Math.sin(angle) * 15;
       
-      // Intentar dibujar el emoji, si falla se verá un círculo amarillo bonito
+      // Intentar dibujar el emoji o esfera
       ctx.fillStyle = '#ffd700';
       ctx.fillText('🧀', qx, qy);
     }

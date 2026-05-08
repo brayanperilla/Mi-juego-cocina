@@ -267,8 +267,12 @@ body::before {
 
 .dizzy-cheese div {
   position: absolute;
+  left: 50%;
+  top: 50%;
   width: 25px;
   height: 25px;
+  margin-left: -12.5px;
+  margin-top: -12.5px;
   background: radial-gradient(circle at 30% 30%, #fff700, #ff8c00);
   border-radius: 50%;
   animation: cheeseOrbit 2s linear infinite;
