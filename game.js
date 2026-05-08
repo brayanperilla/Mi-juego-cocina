@@ -557,7 +557,8 @@ ASSETS.sprites.veggies.src = 'imgs/veggies.png';
 ASSETS.sprites.proteins.src = 'imgs/proteins.png';
 ASSETS.sprites.others.src = 'imgs/others.png';
 
-// Función para remover fondo blanco de las skins (más robusta para GitHub)
+// Función para remover fondo blanco de las skins
+// Umbral alto (248) para NO borrar la ropa del personaje, solo el blanco puro
 function processWhiteBackground(img) {
   const oc = document.createElement('canvas');
   oc.width = img.naturalWidth;
@@ -569,39 +570,42 @@ function processWhiteBackground(img) {
     const imgData = octx.getImageData(0, 0, oc.width, oc.height);
     const d = imgData.data;
 
-    // Umbral de blancura más flexible (200 en lugar de 220)
+    // Umbral MUY alto (248) para solo eliminar blancos casi puros del fondo
+    // Valores menores borrarían la ropa clara del personaje
     for (let i = 0; i < d.length; i += 4) {
       const r = d[i], g = d[i + 1], b = d[i + 2];
-      // Si es muy blanco, lo hacemos transparente
-      if (r > 200 && g > 200 && b > 200) {
-        const whiteness = Math.min(r, g, b);
-        // Desvanecimiento suave de los bordes
-        d[i + 3] = Math.max(0, 255 - Math.round((whiteness - 200) * (255 / 55)));
+      if (r > 248 && g > 248 && b > 248) {
+        d[i + 3] = 0; // Transparente
+      } else if (r > 240 && g > 240 && b > 240) {
+        // Borde suave: semitransparente
+        d[i + 3] = Math.round((255 - r) * 4);
       }
     }
     octx.putImageData(imgData, 0, 0);
   } catch (e) {
-    console.warn("No se pudo procesar la transparencia (CORS):", e);
-    return img; // Devolver imagen original si falla
+    // Si hay error CORS, devolver imagen original sin procesar
+    // La imagen se verá con fondo blanco pero al menos se verá
+    console.warn('Transparencia no procesada (CORS):', e);
+    return img;
   }
   return oc;
 }
 
 // Cargar todas las skins dinámicamente
+// NOTA: No usar crossOrigin aquí porque rompe la carga local (file://)
+// En GitHub Pages las imágenes son same-origin por lo que getImageData funciona sin CORS
 SKINS.forEach(skin => {
   const img = new Image();
-  img.crossOrigin = 'anonymous'; // IMPORTANTE para GitHub Pages y getImageData
   img.onload = () => {
     ASSETS.skinCleanCanvas[skin.id] = processWhiteBackground(img);
   };
   img.onerror = () => {
-    console.error(`Error cargando skin: ${skin.id} desde ${skin.src}`);
-    if (skin.id === 'none') {
-      img.src = 'imgs/remy_chef.png';
-    } else {
-      // Intentar cargar la versión local si la ruta de GitHub falla por alguna razón
-      const localPath = skin.src.startsWith('imgs/') ? skin.src : `imgs/${skin.src}`;
-      if (img.src !== localPath) img.src = localPath;
+    console.warn(`Error cargando skin: ${skin.id}`);
+    // Fallback: intentar con la ruta base de imgs/
+    if (!img._retried) {
+      img._retried = true;
+      const fallback = skin.src.includes('/') ? skin.src.split('/').pop() : skin.src;
+      img.src = `imgs/${fallback}`;
     }
   };
   img.src = skin.src;
@@ -1003,8 +1007,11 @@ function drawBar() {
     }
   }
 
-  const cleanCanvas = ASSETS.skinCleanCanvas[skinId] || ASSETS.skinCleanCanvas['none'];
-  const rawImage = ASSETS.skinImages[skinId] || ASSETS.skinImages['none'];
+  // Preferencia: cleanCanvas de la skin activa → rawImage de la skin activa → fallback a 'none'
+  const cleanCanvas = ASSETS.skinCleanCanvas[skinId];
+  const rawImage = ASSETS.skinImages[skinId];
+  const cleanFallback = ASSETS.skinCleanCanvas['none'];
+  const rawFallback = ASSETS.skinImages['none'];
 
   ctx.save();
   // Efecto borracho: Balanceo
@@ -1036,22 +1043,29 @@ function drawBar() {
     ctx.restore();
   }
 
-  const activeImg = cleanCanvas || rawImage;
-
-  if (activeImg && (activeImg.naturalWidth || activeImg.width)) {
-    const imgW = activeImg.naturalWidth || activeImg.width;
-    const imgH = activeImg.naturalHeight || activeImg.height;
-    const aspect = imgW / imgH;
-    remyH = 195 * scl;
-    remyW = remyH * aspect;
-  }
+  // Cadena completa: canvas procesado → imagen raw de la skin → canvas fallback → imagen raw fallback
+  const activeImg =
+    cleanCanvas ||
+    (rawImage && rawImage.complete && rawImage.naturalWidth > 0 ? rawImage : null) ||
+    cleanFallback ||
+    (rawFallback && rawFallback.complete && rawFallback.naturalWidth > 0 ? rawFallback : null);
 
   if (activeImg) {
+    // Calcular proporciones respetando el aspecto original de la imagen
+    const imgW = activeImg.naturalWidth || activeImg.width || 1;
+    const imgH = activeImg.naturalHeight || activeImg.height || 1;
+    if (imgW > 0 && imgH > 0) {
+      const aspect = imgW / imgH;
+      remyH = 195 * scl;
+      remyW = remyH * aspect;
+    }
     ctx.drawImage(activeImg, bx + bw / 2 - remyW / 2, by - remyH + 10 + yAnim, remyW, remyH);
   } else {
-    // Fallback texto si no hay imagen
+    // Fallback final: emoji mientras cargan las imágenes
     ctx.font = '80px serif';
-    ctx.fillText('🐀', bx + bw / 2 - 40, by - 20);
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'bottom';
+    ctx.fillText('🐭', bx + bw / 2, by - 10 + yAnim);
   }
   ctx.restore();
 
